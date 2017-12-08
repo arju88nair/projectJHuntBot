@@ -98,6 +98,11 @@ def cleanhtml(raw_html):
     if raw_html is not None:
         cleanr = re.compile('<.*?>')
         cleantext = re.sub(cleanr, ' ', raw_html)
+        cleanr = re.compile('&.*?;')
+        cleantext = re.sub(cleanr, '', cleantext)
+        cleanr = re.compile('\n')
+        cleantext = re.sub(cleanr, '', cleantext)
+        cleantext=cleantext.strip()
         return cleantext
     else:
         return ""
