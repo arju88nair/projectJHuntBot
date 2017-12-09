@@ -50,6 +50,8 @@ class Spider(XMLFeedSpider):
         item = {}
         source = response.meta.get('source')
         category = response.meta.get('category')
+        self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
+
         title = node.xpath('title/text()').extract_first()
         item['title'] = title
         item['link'] = node.xpath('link/text()').extract_first()
@@ -63,14 +65,16 @@ class Spider(XMLFeedSpider):
             media = node.xpath("*[local-name()='content']/@url").extract_first()
             thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
             full = node.xpath("fullimage/text()").extract_first()
+            enclosure = node.xpath("enclosure/@url").extract_first()
             if media:
                 item['image'] = media
             elif thumb:
                 item['image'] = thumb
+            elif enclosure:
+                item['image'] = enclosure
             elif full:
                 item['image'] = full
-            else:
-                item['image'] = ''
+
 
         item['category'] = response.meta.get('category')
         item['type'] = response.meta.get('type')
