@@ -50,7 +50,7 @@ class Spider(XMLFeedSpider):
         item = {}
         source = response.meta.get('source')
         category = response.meta.get('category')
-        self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
+        # self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
 
         title = node.xpath('title/text()').extract_first()
         item['title'] = title
