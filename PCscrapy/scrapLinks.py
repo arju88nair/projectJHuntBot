@@ -139,6 +139,12 @@ Links = [
      "Deccan Herald", "General", "Top"],
     ["http://www.deccanherald.com/rss-internal/news.rss",
      "Deccan Herald", "World", "Top"],
+    ["http://www.dailymail.co.uk/articles.rss",
+     "Daily Mail", "World", "Top"],
+    ["http://www.dailymail.co.uk/home/index.rss",
+     "Daily Mail", "World", "Top"],
+    ["http://www.dailymail.co.uk/news/index.rss",
+     "Daily Mail", "General", "Top"],
 
 
 
