@@ -46,7 +46,7 @@ class Spider(XMLFeedSpider):
             request.meta['category'] = url[2]
             request.meta['type'] = url[3]
             request.meta['url'] = url[0]
-            logging.error('For ' + url[0] + ' in ' + url[2])
+            # logging.error('For ' + url[0] + ' in ' + url[2])
             yield request
 
     """
@@ -75,6 +75,7 @@ class Spider(XMLFeedSpider):
                 media = node.xpath("*[local-name()='content']/@url").extract_first()
                 thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
                 full = node.xpath("fullimage/text()").extract_first()
+                image= node.xpath("image/text()").extract_first()
                 enclosure = node.xpath("enclosure/@url").extract_first()
                 if media:
                     item['image'] = media
@@ -82,6 +83,8 @@ class Spider(XMLFeedSpider):
                     item['image'] = thumb
                 elif enclosure:
                     item['image'] = enclosure
+                elif image:
+                    item['image'] = image
                 elif full:
                     item['image'] = full
 
