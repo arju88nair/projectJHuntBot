@@ -15,7 +15,7 @@ Instead of depending upon  3rd party API service for news feeds, started scrappi
 To be done in future:
 1) Have to train a model to weed out fake,corrupted,incomplete
 2) Multiple spiders for scraping news websites instead of RSS feeds
-3) Unified command for simultaneos launch of spiders
+3) Unified command for simultaneous launch of spiders
 
 
 This is an alternate working version of ProjectCulminate which is done using Scrapy. Opted for Scrapy because the deployment of [ProjectCulminate](https://github.com/arju88nair/ProjectCulminate) resulted in massive loss in performance.
