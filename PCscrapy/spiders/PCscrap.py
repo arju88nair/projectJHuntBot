@@ -12,11 +12,14 @@ from PCscrapy.scrapLinks import Links
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 
+now = datetime.now()
+
+
 logging.basicConfig(filename='weird.log', level=logging.WARNING)
 start = time.time()
 
-connection = MongoClient('mongodb://localhost:27017/Test')
-db = connection.Test
+connection = MongoClient('mongodb://localhost:27017/Culminate')
+db = connection.Culminate
 
 
 class Spider(XMLFeedSpider):
@@ -27,7 +30,6 @@ class Spider(XMLFeedSpider):
     name = "scrap"
     allowed_domains = ["feeds.feedburner.com"]
     itertag = 'item'
-    logging.getLogger('scrapy').setLevel(logging.WARNING)
 
     def start_requests(self):
 
@@ -54,43 +56,46 @@ class Spider(XMLFeedSpider):
 
         title = node.xpath('title/text()').extract_first()
         item['title'] = title
-        item['link'] = node.xpath('link/text()').extract_first()
-        item['published'] = node.xpath('pubDate/text()').extract_first()
-        description = node.xpath('description/text()').extract_first()
-        item['summary'] = cleanhtml(description)
-        item['source'] = response.meta.get('source')
-        if source == "The Guardian":
-            item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
-        else:
-            media = node.xpath("*[local-name()='content']/@url").extract_first()
-            thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
-            full = node.xpath("fullimage/text()").extract_first()
-            enclosure = node.xpath("enclosure/@url").extract_first()
-            if media:
-                item['image'] = media
-            elif thumb:
-                item['image'] = thumb
-            elif enclosure:
-                item['image'] = enclosure
-            elif full:
-                item['image'] = full
+        if title:
+            item['link'] = node.xpath('link/text()').extract_first()
+            item['published'] = node.xpath('pubDate/text()').extract_first()
+            description = node.xpath('description/text()').extract_first()
+            item['summary'] = cleanhtml(description)
+            item['source'] = response.meta.get('source')
+            if source == "The Guardian":
+                item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
+            else:
+                media = node.xpath("*[local-name()='content']/@url").extract_first()
+                thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
+                full = node.xpath("fullimage/text()").extract_first()
+                enclosure = node.xpath("enclosure/@url").extract_first()
+                if media:
+                    item['image'] = media
+                elif thumb:
+                    item['image'] = thumb
+                elif enclosure:
+                    item['image'] = enclosure
+                elif full:
+                    item['image'] = full
 
 
-        item['category'] = response.meta.get('category')
-        item['type'] = response.meta.get('type')
-        item['uTag'] = hashlib.sha256(
-            title.encode('utf-8')).hexdigest()[:16]
-        item['created_at'] = str(datetime.now())
-        Rake = RAKE.Rake('stopwords_en.txt')
-        words = Rake.run(title)
-        tagWordArray = []
-        for word in words:
-            tagWordArray.append(word[0].title())
-        item['tags'] = tagWordArray
-        insertingBlock(item, source, category)
+            item['category'] = response.meta.get('category')
+            item['type'] = response.meta.get('type')
+            item['uTag'] = hashlib.sha256(
+                title.encode('utf-8')).hexdigest()[:16]
+            item['created_at'] = str(datetime.now())
+            Rake = RAKE.Rake('stopwords_en.txt')
+            words = Rake.run(title)
+            tagWordArray = []
+            for word in words:
+                tagWordArray.append(word[0].title())
+            item['tags'] = tagWordArray
+            insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
         logging.info('Work time:' + str(time.time() - start))
+        logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
+
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
 
