@@ -15,7 +15,6 @@ from scrapy import signals
 now = datetime.now()
 
 
-logging.basicConfig(filename='weird.log', level=logging.WARNING)
 start = time.time()
 
 connection = MongoClient('mongodb://localhost:27017/Culminate')
@@ -31,6 +30,14 @@ class Spider(XMLFeedSpider):
     allowed_domains = ["feeds.feedburner.com"]
     itertag = 'item'
 
+    logging.getLogger("requests").setLevel(logging.WARNING)
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format=
+        '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+        datefmt='%a, %d %b %Y %H:%M:%S',
+        filename='weird.log',
+        filemode='w')
     def start_requests(self):
 
         for url in Links:
