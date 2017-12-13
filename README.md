@@ -1,8 +1,7 @@
 # PCScrapy
 Currently an API structure done using scrapy for culminating news from different sources and curating them 
 
-Project Culminate
-=========
+Part of Project Culminate
 
 
 Project Culminate,
