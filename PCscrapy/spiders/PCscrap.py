@@ -11,14 +11,14 @@ from pymongo import MongoClient
 from PCscrapy.scrapLinks import Links
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
+from random import shuffle
 
 now = datetime.now()
 
-
 start = time.time()
 
-connection = MongoClient('mongodb://localhost:27017/Culminate')
-db = connection.Culminate
+connection = MongoClient('mongodb://localhost:27017/Test')
+db = connection.Test
 
 
 class Spider(XMLFeedSpider):
@@ -38,6 +38,7 @@ class Spider(XMLFeedSpider):
         datefmt='%a, %d %b %Y %H:%M:%S',
         filename='weird.log',
         filemode='w')
+
     def start_requests(self):
 
         for url in Links:
@@ -75,7 +76,7 @@ class Spider(XMLFeedSpider):
                 media = node.xpath("*[local-name()='content']/@url").extract_first()
                 thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
                 full = node.xpath("fullimage/text()").extract_first()
-                image= node.xpath("image/text()").extract_first()
+                image = node.xpath("image/text()").extract_first()
                 enclosure = node.xpath("enclosure/@url").extract_first()
                 if media:
                     item['image'] = media
@@ -88,7 +89,6 @@ class Spider(XMLFeedSpider):
                 elif full:
                     item['image'] = full
 
-
             item['category'] = response.meta.get('category')
             item['type'] = response.meta.get('type')
             item['uTag'] = hashlib.sha256(
@@ -100,12 +100,13 @@ class Spider(XMLFeedSpider):
             for word in words:
                 tagWordArray.append(word[0].title())
             item['tags'] = tagWordArray
-            insertingBlock(item, source, category)
+            db.Temp.insert_one(item)
+            # insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
         logging.info('Work time:' + str(time.time() - start))
         logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
-
+        randomiseInsert()
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
 
@@ -121,7 +122,7 @@ def cleanhtml(raw_html):
         cleantext = re.sub(cleanr, '', cleantext)
         cleanr = re.compile('\n')
         cleantext = re.sub(cleanr, '', cleantext)
-        cleantext=cleantext.strip()
+        cleantext = cleantext.strip()
         return cleantext
     else:
         return ""
@@ -152,3 +153,10 @@ def insertingBlock(item, source, category):
                 logging.debug('Error in insertion for ' +
                               category + "   for  " + source)
                 logging.debug('\n')
+
+
+def randomiseInsert():
+    temp = shuffle(list(db.Temp.find({}, {'_id': False})))
+    if temp:
+        for item in temp:
+            insertingBlock(item, item['source'], item['category'])
