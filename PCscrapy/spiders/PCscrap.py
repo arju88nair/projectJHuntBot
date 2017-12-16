@@ -134,7 +134,6 @@ def insertingBlock(item, source, category):
        Inserting  function with respect to the collection name parsed
 
        """
-
     if db[category].count() == 0:
         db[category].insert_one(item)
     else:
@@ -156,7 +155,9 @@ def insertingBlock(item, source, category):
 
 
 def randomiseInsert():
-    temp = shuffle(list(db.Temp.find({}, {'_id': False})))
+    temp = list(db.Temp.find({}, {'_id': False}))
+    shuffle(temp)
     if temp:
         for item in temp:
             insertingBlock(item, item['source'], item['category'])
+        db.Temp.drop()
