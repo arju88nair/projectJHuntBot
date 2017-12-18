@@ -13,7 +13,6 @@ from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
 
-
 now = datetime.now()
 
 start = time.time()
@@ -69,7 +68,7 @@ class Spider(XMLFeedSpider):
             item['link'] = node.xpath('link/text()').extract_first()
             item['published'] = node.xpath('pubDate/text()').extract_first()
             description = node.xpath('description/text()').extract_first()
-            description= cleanhtml(description)
+            description = cleanhtml(description)
             item['summary'] = description
             item['source'] = response.meta.get('source')
             if source == "The Guardian":
@@ -106,8 +105,6 @@ class Spider(XMLFeedSpider):
             # insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
-        logging.info('Work time:' + str(time.time() - start))
-        logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
         randomiseInsert()
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
@@ -163,3 +160,5 @@ def randomiseInsert():
         for item in temp:
             insertingBlock(item, item['source'], item['category'])
         db.Temp.drop()
+        logging.info('Work time:' + str(time.time() - start))
+        logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
