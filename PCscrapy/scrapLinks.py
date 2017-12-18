@@ -160,7 +160,7 @@ Links = [
     ["https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms",
      "Economic Times", "Economy", "Top"],
     ["https://economictimes.indiatimes.com/news/politics-and-nation/rssfeeds/1052732854.cms",
-     "Economic Times", "Politics", "Top"],
+     "Economic Times", "India", "Top"],
     ["https://economictimes.indiatimes.com/news/defence/rssfeeds/46687796.cms",
      "Economic Times", "World", "Top"],
     ["https://economictimes.indiatimes.com/news/international/rssfeeds/858478126.cms",
@@ -205,6 +205,8 @@ Links = [
      "Independent", "Entertainment", "Top"],
     ["http://www.independent.co.uk/arts-entertainment/comedy/rss",
      "Independent", "Entertainment", "Top"],
+    ["http://feeds.feedburner.com/firstpost/xfJh",
+     "First Post", "General", "Top"],
 
 
 ]
