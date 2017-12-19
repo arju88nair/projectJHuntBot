@@ -2,3 +2,4 @@
 weird.log
 .idea/
 __pycache__/
+PCscrapy/spiders/__pycache__
