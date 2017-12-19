@@ -17,8 +17,8 @@ now = datetime.now()
 
 start = time.time()
 
-connection = MongoClient('mongodb://localhost:27017/Test')
-db = connection.Test
+connection = MongoClient('mongodb://localhost:27017/Culminate')
+db = connection.Culminate
 
 
 class Spider(XMLFeedSpider):
