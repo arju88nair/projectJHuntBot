@@ -63,7 +63,7 @@ class Spider(XMLFeedSpider):
         # self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
 
         title = node.xpath('title/text()').extract_first()
-        item['title'] = title
+        item['title'] = cleanhtml(title)
         if title:
             item['link'] = node.xpath('link/text()').extract_first()
             item['published'] = node.xpath('pubDate/text()').extract_first()
