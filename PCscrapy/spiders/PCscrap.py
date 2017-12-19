@@ -17,8 +17,8 @@ now = datetime.now()
 
 start = time.time()
 
-connection = MongoClient('mongodb://localhost:27017/Culminate')
-db = connection.Culminate
+connection = MongoClient('mongodb://localhost:27017/Test')
+db = connection.Test
 
 
 class Spider(XMLFeedSpider):
@@ -117,13 +117,13 @@ def cleanhtml(raw_html):
     if raw_html is not None:
         cleanr = re.compile('<.*?>')
         cleantext = re.sub(cleanr, ' ', raw_html)
+        cleanr = re.compile('&apos;')
+        cleantext = re.sub(cleanr, "'", cleantext)
         cleanr = re.compile('&.*?;')
         cleantext = re.sub(cleanr, '', cleantext)
         cleanr = re.compile('\n')
         cleantext = re.sub(cleanr, '', cleantext)
         cleantext = cleantext.strip()
-        cleanr = re.compile('&apos;')
-        cleantext = re.sub(cleanr, "'", raw_html)
         return cleantext
     else:
         return ""
