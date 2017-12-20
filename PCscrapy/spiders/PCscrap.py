@@ -40,7 +40,7 @@ class Spider(XMLFeedSpider):
         filemode='w')
 
     def start_requests(self):
-
+        shuffle(Links)
         for url in Links:
             request = scrapy.Request(url=url[0], callback=self.parse)
             request.meta['source'] = url[1]
