@@ -13,13 +13,18 @@ from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
 from PCscrapy.geography import tags
+from bson.json_util import dumps
+
+
+
+import json
 
 now = datetime.now()
 
 start = time.time()
 
-connection = MongoClient('mongodb://localhost:27017/Culminate')
-db = connection.Culminate
+connection = MongoClient('mongodb://localhost:27017/Test')
+db = connection.Test
 
 
 class Spider(XMLFeedSpider):
@@ -75,7 +80,13 @@ class Spider(XMLFeedSpider):
             item['source'] = response.meta.get('source')
             tagText=str(title)+str(description)
             countryClass=tags.getCountry(tagText)
-
+            print(title)
+            print(dumps(countryClass))
+            print("\n")
+            if len(countryClass) > 0:
+                item['category'] = "India"
+            else:
+                item['category'] = response.meta.get('category')
 
             if source == "The Guardian":
                 item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
@@ -96,7 +107,7 @@ class Spider(XMLFeedSpider):
                 elif full:
                     item['image'] = full
 
-            item['category'] = response.meta.get('category')
+
             item['type'] = response.meta.get('type')
             item['uTag'] = hashlib.sha256(
                 title.encode('utf-8')).hexdigest()[:16]
