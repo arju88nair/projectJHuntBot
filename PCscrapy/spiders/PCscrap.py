@@ -12,6 +12,7 @@ from PCscrapy.scrapLinks import Links
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
+from PCscrapy.geography import tags
 
 now = datetime.now()
 
@@ -41,6 +42,7 @@ class Spider(XMLFeedSpider):
 
     def start_requests(self):
         shuffle(Links)
+
         for url in Links:
             request = scrapy.Request(url=url[0], callback=self.parse)
             request.meta['source'] = url[1]
@@ -71,6 +73,10 @@ class Spider(XMLFeedSpider):
             description = cleanhtml(description)
             item['summary'] = description
             item['source'] = response.meta.get('source')
+            tagText=str(title)+str(description)
+            countryClass=tags.getCountry(tagText)
+
+
             if source == "The Guardian":
                 item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
             else:
