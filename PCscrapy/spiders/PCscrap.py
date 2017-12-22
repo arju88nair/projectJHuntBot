@@ -80,9 +80,8 @@ class Spider(XMLFeedSpider):
             item['source'] = response.meta.get('source')
             tagText=str(title)+str(description)
             countryClass=tags.getCountry(tagText)
-            # print(title)
-            # print(dumps(countryClass))
-            # print("\n")
+
+           
             if len(countryClass) > 0:
                 item['category'] = "India"
             else:

@@ -1,6 +1,18 @@
 # PCScrapy
 Currently an API structure done using scrapy for culminating news from different sources and curating them 
 
+
+
+**Installation**
+
+Require python3
+All other requirments are in the txt file
+
+> pip3 install requirments.txt
+
+
+
+
 Part of Project Culminate
 
 
