@@ -1,5 +1,4 @@
 import nltk
-import numpy
 from pymongo import MongoClient
 
 connection = MongoClient('mongodb://localhost:27017/Culminate')

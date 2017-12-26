@@ -363,6 +363,8 @@ Links = [
      "Science Daily", "Science", "Top"],
     ["https://www.sciencenews.org/feeds/headlines.rss",
      "Science News", "Science", "Top"],
+    ["https://www.npr.org/rss/rss.php?id=1001",
+     "NRP", "General", "Top"],
 
 
 ]
