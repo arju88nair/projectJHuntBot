@@ -365,6 +365,16 @@ Links = [
      "Science News", "Science", "Top"],
     ["https://www.npr.org/rss/rss.php?id=1001",
      "NRP", "General", "Top"],
+    ["http://www.news18.com/rss/politics.xml",
+     "News 18", "Politics", "Top"],
+    ["http://www.news18.com/rss/tech.xml",
+     "News 18", "Technology", "Top"],
+    ["http://www.news18.com/rss/business.xml",
+     "News 18", "Business", "Top"],
+    ["http://www.news18.com/rss/india.xml",
+     "News 18", "India", "Top"],
+    ["http://www.news18.com/rss/sports.xml",
+     "News 18", "Sports", "Top"],
 
 
 ]
