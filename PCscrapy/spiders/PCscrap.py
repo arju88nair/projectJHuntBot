@@ -78,14 +78,14 @@ class Spider(XMLFeedSpider):
             description = cleanhtml(description)
             item['summary'] = description
             item['source'] = response.meta.get('source')
-            tagText=str(title)+str(description)
-            countryClass=tags.getCountry(tagText)
-
-           
-            if len(countryClass) > 0:
-                item['category'] = "India"
-            else:
-                item['category'] = response.meta.get('category')
+            # tagText=str(title)+str(description)
+            # countryClass=tags.getCountry(tagText)
+            #
+            #
+            # if len(countryClass) > 0:
+            #     item['category'] = "India"
+            # else:
+            item['category'] = response.meta.get('category')
 
             if source == "The Guardian":
                 item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
