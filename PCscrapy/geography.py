@@ -1,5 +1,6 @@
 import nltk
 from pymongo import MongoClient
+from pprint import pprint
 
 connection = MongoClient('mongodb://localhost:27017/Culminate')
 db = connection.Culminate
@@ -28,12 +29,17 @@ class tags():
             if type(ne) is nltk.tree.Tree:
                 if (ne.label() == 'GPE' or ne.label() == 'PERSON'):
                     places.append(u' '.join([i[0] for i in ne.leaves()]))
-        places = set(places)
+        places = list(set(places))
         result = []
+
         for place in places:
-            response = db.Geo.find({'$or': [{"city_name": place},
+            response=''
+
+            response = db.Geo.find_one({'$or': [{"city_name": place},
                                             {"country_name": place},
                                             {"subdivision_name": place},
+
                                             ]})
-            result.append(response)
+            if response:
+                result.append(list(response))
         return result
