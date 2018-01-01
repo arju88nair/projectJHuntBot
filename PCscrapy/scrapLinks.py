@@ -375,6 +375,8 @@ Links = [
      "News 18", "India", "Top"],
     ["http://www.news18.com/rss/sports.xml",
      "News 18", "Sports", "Top"],
+    ["http://feeds.feedburner.com/medianama",
+     "News 18", "Sports", "Top"],
 
 
 ]
