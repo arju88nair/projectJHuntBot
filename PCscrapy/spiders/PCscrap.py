@@ -14,6 +14,7 @@ from scrapy import signals
 from random import shuffle
 from PCscrapy.geography import tags
 from bson.json_util import dumps
+import pprint
 
 
 
@@ -122,6 +123,7 @@ class Spider(XMLFeedSpider):
 
     def handle_spider_closed(spider, reason):
         randomiseInsert()
+        popularInsert()
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
 
@@ -180,3 +182,34 @@ def randomiseInsert():
         db.Temp.drop()
         logging.info('Work time:' + str(time.time() - start))
         logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
+
+
+def popularInsert():
+    popular = list(db.PopularPosts.aggregate([
+        {
+            '$lookup':
+                {
+                    'from': "Main",
+                    'localField': "idPost",
+                    'foreignField': "uTag",
+                    'as': "Main"
+                }
+        },
+        {
+            '$project': {
+                '_id': 1,
+                "idPost": 1,
+                "Main": 1,
+                "count": {'$size': "$users"}
+
+            }
+        },
+
+        {'$sort': {'count': -1, 'created_at': -1}},
+        {
+            '$limit': 8
+        }
+    ]))
+    print(popular)
+    db.popular.insert({popular})
+
