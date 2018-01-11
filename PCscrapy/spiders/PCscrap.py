@@ -210,6 +210,7 @@ def popularInsert():
             '$limit': 8
         }
     ]))
+    db.Popular.remove()
     for item in popular:
         db.Popular.insert(item)
 
