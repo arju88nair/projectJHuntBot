@@ -122,7 +122,7 @@ class Spider(XMLFeedSpider):
             # insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
-        randomiseInsert()
+        # randomiseInsert()
         popularInsert()
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
@@ -210,6 +210,6 @@ def popularInsert():
             '$limit': 8
         }
     ]))
-    print(popular)
-    db.popular.insert({popular})
+    for item in popular:
+        db.Popular.insert(item)
 
