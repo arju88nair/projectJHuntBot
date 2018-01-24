@@ -141,6 +141,12 @@ def cleanhtml(raw_html):
         cleantext = re.sub(cleanr, '', cleantext)
         cleanr = re.compile('\n')
         cleantext = re.sub(cleanr, '', cleantext)
+        cleanr = re.compile('{.*?}')
+        cleantext = re.sub(cleanr, '', cleantext)
+        cleanr = re.compile('/.*?/')
+        cleantext = re.sub(cleanr, '', cleantext)
+        cleanr = re.compile('table.MsoNormalTable')
+        cleantext = re.sub(cleanr, '', cleantext)
         cleantext = cleantext.strip()
         return cleantext
     else:

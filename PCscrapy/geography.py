@@ -34,7 +34,6 @@ class tags():
 
         for place in places:
             response=''
-
             response = db.Geo.find_one({'$or': [{"city_name": place},
                                             {"country_name": place},
                                             {"subdivision_name": place},
