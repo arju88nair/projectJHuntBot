@@ -133,8 +133,10 @@ def cleanhtml(raw_html):
     To remove html tags in the summary
     """
     if raw_html is not None:
-        cleanr = re.compile(r'<[^>]+>')
+        cleanr = re.compile(r'<w:(.*)>(.*)</w:(.*)>')
         cleantext = re.sub(cleanr, ' ', raw_html)
+        cleanr = re.compile(r'<[^>]+>')
+        cleantext = re.sub(cleanr, ' ', cleantext)
         cleanr = re.compile('&apos;')
         cleantext = re.sub(cleanr, "'", cleantext)
         cleanr = re.compile('&.*?;')
