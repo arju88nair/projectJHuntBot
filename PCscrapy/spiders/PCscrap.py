@@ -123,7 +123,7 @@ class Spider(XMLFeedSpider):
 
     def handle_spider_closed(spider, reason):
         # randomiseInsert()
-        popularInsert()
+        # popularInsert()
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
 
