@@ -119,10 +119,10 @@ class Spider(XMLFeedSpider):
                 tagWordArray.append(word[0].title())
             item['tags'] = tagWordArray
             db.Temp.insert_one(item)
-            # insertingBlock(item, source, category)
+            insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
-        randomiseInsert()
+        # randomiseInsert()
         popularInsert()
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
@@ -181,15 +181,15 @@ def insertingBlock(item, source, category):
                 logging.debug('\n')
 
 
-def randomiseInsert():
-    temp = list(db.Temp.find({}, {'_id': False}))
-    shuffle(temp)
-    if temp:
-        for item in temp:
-            insertingBlock(item, item['source'], item['category'])
-        db.Temp.drop()
-        logging.info('Work time:' + str(time.time() - start))
-        logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
+# def randomiseInsert():
+#     temp = list(db.Temp.find({}, {'_id': False}))
+#     shuffle(temp)
+#     if temp:
+#         for item in temp:
+#             insertingBlock(item, item['source'], item['category'])
+#         db.Temp.drop()
+#         logging.info('Work time:' + str(time.time() - start))
+#         logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
 
 
 def popularInsert():
