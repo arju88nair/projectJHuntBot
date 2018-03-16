@@ -122,11 +122,12 @@ class Spider(XMLFeedSpider):
             insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
-        # randomiseInsert()
-        # popularInsert()
+        print("Closed handle")
+
+
+
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
-
 
 def cleanhtml(raw_html):
     """
