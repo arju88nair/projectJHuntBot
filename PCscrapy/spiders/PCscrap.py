@@ -80,12 +80,12 @@ class Spider(XMLFeedSpider):
             item['summary'] = description
             item['source'] = response.meta.get('source')
             tagText=str(title)+str(description)
-            # countryClass=tags.getCountry(tagText)
+            countryClass=tags.getCountry(tagText)
 
-            # if len(countryClass) > 0:
-            #
-            #     item['category'] = "India"
-            # else:
+            if len(countryClass) > 0:
+
+                item['category'] = "India"
+            else:
             item['category'] = response.meta.get('category')
 
             if source == "The Guardian":
@@ -122,6 +122,7 @@ class Spider(XMLFeedSpider):
             insertingBlock(item, source, category)
 
     def handle_spider_closed(spider, reason):
+        popularInsert()
         print("Closed handle")
 
 
