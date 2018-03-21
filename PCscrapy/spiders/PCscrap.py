@@ -86,7 +86,8 @@ class Spider(XMLFeedSpider):
 
                 item['category'] = "India"
             else:
-            item['category'] = response.meta.get('category')
+
+                item['category'] = response.meta.get('category')
 
             if source == "The Guardian":
                 item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
