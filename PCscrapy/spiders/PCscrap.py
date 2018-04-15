@@ -1,4 +1,5 @@
 import scrapy
+import random
 import re
 import datetime
 import logging
@@ -24,8 +25,8 @@ now = datetime.now()
 
 start = time.time()
 
-connection = MongoClient('mongodb://localhost:27017/Culminate')
-db = connection.Culminate
+connection = MongoClient('mongodb://localhost:27017/Hsh')
+db = connection.Hush
 
 
 class Spider(XMLFeedSpider):
@@ -73,24 +74,29 @@ class Spider(XMLFeedSpider):
         title = node.xpath('title/text()').extract_first()
         item['title'] = cleanhtml(title)
         if title:
-            item['link'] = node.xpath('link/text()').extract_first()
-            item['published'] = node.xpath('pubDate/text()').extract_first()
             description = node.xpath('description/text()').extract_first()
             description = cleanhtml(description)
-            item['summary'] = description
-            item['source'] = response.meta.get('source')
+            item['content'] = description
             tagText=str(title)+str(description)
-            countryClass=tags.getCountry(tagText)
+            # countryClass=tags.getCountry(tagText)
+            foo = ['Culture','Compensation','Career']
+            item['category']= random.choice(foo)
+            authors=['H.G Wells', 'Stephen King', 'Agatha Christie', 'George Orwerll','J.K Rowling']
+            item['authorName']= random.choice(authors)
+            authorPics=['https://pharmasavevancouver.com/wp-content/uploads/2016/12/placeholder-man.png','http://style.anu.edu.au/_anu/4/images/placeholders/person.png','http://hopperblue.com/wp-content/uploads/2015/06/people-placeholder-300x300-copy2.jpg','https://i0.wp.com/manageability.com/wp-content/uploads/2016/05/people-placeholder-full.png?ssl=1']
+            item['authorPic']= random.choice(authorPics)
+            tags=['wellbeing','boring','culture','standard']
+            item['tags']= random.choice(tags)
 
-            if len(countryClass) > 0:
-
-                item['category'] = "India"
-            else:
-
-                item['category'] = response.meta.get('category')
+            # if len(countryClass) > 0:
+            #
+            #     item['category'] = "India"
+            # else:
+            #
+            #     item['category'] = response.meta.get('category')
 
             if source == "The Guardian":
-                item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
+                item['imageUrl'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
             else:
                 media = node.xpath("*[local-name()='content']/@url").extract_first()
                 thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
@@ -98,32 +104,19 @@ class Spider(XMLFeedSpider):
                 image = node.xpath("image/text()").extract_first()
                 enclosure = node.xpath("enclosure/@url").extract_first()
                 if media:
-                    item['image'] = media
+                    item['imageUrl'] = media
                 elif thumb:
-                    item['image'] = thumb
+                    item['imageUrl'] = thumb
                 elif enclosure:
-                    item['image'] = enclosure
+                    item['imageUrl'] = enclosure
                 elif image:
-                    item['image'] = image
+                    item['imageUrl'] = image
                 elif full:
-                    item['image'] = full
+                    item['imageUrl'] = full
 
-
-            item['type'] = response.meta.get('type')
-            item['uTag'] = hashlib.sha256(
-                title.encode('utf-8')).hexdigest()[:16]
-            item['created_at'] = str(datetime.now())
-            Rake = RAKE.Rake('stopwords_en.txt')
-            words = Rake.run(title)
-            tagWordArray = []
-            for word in words:
-                tagWordArray.append(word[0].title())
-            item['tags'] = tagWordArray
-            db.Temp.insert_one(item)
-            insertingBlock(item, source, category)
+            db.blogs.insert_one(item)
 
     def handle_spider_closed(spider, reason):
-        popularInsert()
         print("Closed handle")
 
 
