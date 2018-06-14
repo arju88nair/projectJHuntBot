@@ -5,13 +5,13 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 import random
-from PCscrapy.user_agents import agents
+from PJH.user_agents import agents
 from scrapy import signals
 import json
 
 
 
-class PcscrapySpiderMiddleware(object):
+class PJHSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
     # passed objects.

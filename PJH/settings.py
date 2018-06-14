@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for PCscrapy project
+# Scrapy settings for PJH project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'PCscrapy'
+BOT_NAME = 'PJH'
 
-SPIDER_MODULES = ['PCscrapy.spiders']
-NEWSPIDER_MODULE = 'PCscrapy.spiders'
+SPIDER_MODULES = ['PJH.spiders']
+NEWSPIDER_MODULE = 'PJH.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'PCscrapy (+http://www.yourdomain.com)'
+#USER_AGENT = 'PJH (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,18 +47,18 @@ CONCURRENT_REQUESTS = 32
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'PCscrapy.middlewares.PcscrapySpiderMiddleware': 543,
+#    'PJH.middlewares.PJHSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'PCscrapy.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'PJH.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 DOWNLOADER_MIDDLEWARES = {
-    "PCscrapy.middlewares.UserAgentMiddleware": 401,
-    "PCscrapy.middlewares.CookiesMiddleware": 402,
+    "PJH.middlewares.UserAgentMiddleware": 401,
+    "PJH.middlewares.CookiesMiddleware": 402,
 }
 
 
@@ -71,7 +71,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'PCscrapy.pipelines.PcscrapyPipeline': 300,
+#    'PJH.pipelines.PJHPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

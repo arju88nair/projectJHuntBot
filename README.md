@@ -1,4 +1,4 @@
-# PCScrapy
+# PJH
 Currently an API structure done using scrapy for culminating news from different sources and curating them 
 
 
@@ -36,5 +36,5 @@ This is an alternate working version of ProjectCulminate which is done using Scr
 Licensing
 =========
 Project Culminate is licensed under the Apache License, Version 2.0. See
-[LICENSE](https://github.com/arju88nair/PCscrapy/blob/master/LICENSE) for the full
+[LICENSE](https://github.com/arju88nair/PJH/blob/master/LICENSE) for the full
 license text.
