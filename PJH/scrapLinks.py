@@ -1,4 +1,6 @@
-Links=[
+Links = [
+    ["https://www.theguardian.com/world/rss",
+     "The Guardian", "World", "Top"],
 
-    ["https://www.naukri.com/php-mysql-jobs"]
+
 ]

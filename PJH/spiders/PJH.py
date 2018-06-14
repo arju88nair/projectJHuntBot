@@ -13,6 +13,8 @@ from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
 from bson.json_util import dumps
+from scrapy.shell import inspect_response
+
 import pprint
 
 
@@ -27,105 +29,120 @@ connection = MongoClient('mongodb://localhost:27017/PJH')
 db = connection.Culminate
 
 
-class Spider(XMLFeedSpider):
-    """
-        Active main spider which crawls through the links provided
-
-    """
+class Spider(scrapy.Spider):
     name = "scrap"
-    allowed_domains = [""]
-    itertag = 'item'
-
-    logging.getLogger("requests").setLevel(logging.WARNING)
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format=
-        '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-        datefmt='%a, %d %b %Y %H:%M:%S',
-        filename='weird.log',
-        filemode='w')
 
     def start_requests(self):
-        shuffle(Links)
+        urls = [
+            'https://www.naukri.com/php-jobs',
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
 
-        for url in Links:
-            request = scrapy.Request(url=url[0], callback=self.parse)
-            print(request)
-            # logging.error('For ' + url[0] + ' in ' + url[2])
-            yield request
-
-    """
-    
-    Parsing block for the default rss 
-    
-    """
-
-    def parse_node(self, response, node):
-        item = {}
-        source = response.meta.get('source')
-        category = response.meta.get('category')
-        # self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
-
-        title = node.xpath('title/text()').extract_first()
-        item['title'] = cleanhtml(title)
-        if title:
-            item['link'] = node.xpath('link/text()').extract_first()
-            item['published'] = node.xpath('pubDate/text()').extract_first()
-            description = node.xpath('description/text()').extract_first()
-            description = cleanhtml(description)
-            item['summary'] = description
-            item['source'] = response.meta.get('source')
-            tagText=str(title)+str(description)
-            countryClass=tags.getCountry(tagText)
-
-            if len(countryClass) > 0:
-
-                item['category'] = "India"
-            else:
-
-                item['category'] = response.meta.get('category')
-
-            if source == "The Guardian":
-                item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
-            else:
-                media = node.xpath("*[local-name()='content']/@url").extract_first()
-                thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
-                full = node.xpath("fullimage/text()").extract_first()
-                image = node.xpath("image/text()").extract_first()
-                enclosure = node.xpath("enclosure/@url").extract_first()
-                if media:
-                    item['image'] = media
-                elif thumb:
-                    item['image'] = thumb
-                elif enclosure:
-                    item['image'] = enclosure
-                elif image:
-                    item['image'] = image
-                elif full:
-                    item['image'] = full
-
-
-            item['type'] = response.meta.get('type')
-            item['uTag'] = hashlib.sha256(
-                title.encode('utf-8')).hexdigest()[:16]
-            item['created_at'] = str(datetime.now())
-            Rake = RAKE.Rake('stopwords_en.txt')
-            words = Rake.run(title)
-            tagWordArray = []
-            for word in words:
-                tagWordArray.append(word[0].title())
-            item['tags'] = tagWordArray
-            db.Temp.insert_one(item)
-            insertingBlock(item, source, category)
-
-    def handle_spider_closed(spider, reason):
-        popularInsert()
-        print("Closed handle")
+    def parse(self, response):
+        page = response.url.split("/")[-2]
+        filename = 'quotes-%s.html' % page
+        with open(filename, 'wb') as f:
+            f.write(response.body)
+        self.log('Saved file %s' % filename)
 
 
 
-
-    dispatcher.connect(handle_spider_closed, signals.spider_closed)
+# class Spider(XMLFeedSpider):
+#     """
+#         Active main spider which crawls through the links provided
+#
+#     """
+#     name = "scrap"
+#     allowed_domains = [""]
+#     itertag = 'item'
+#
+#     logging.getLogger("requests").setLevel(logging.WARNING)
+#     logging.basicConfig(
+#         level=logging.DEBUG,
+#         format=
+#         '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+#         datefmt='%a, %d %b %Y %H:%M:%S',
+#         filename='weird.log',
+#         filemode='w')
+#
+#     def start_requests(self):
+#         for url in Links:
+#             request = scrapy.Request(url=url[0], callback=self.parse)
+#             yield request
+#
+#     """
+#
+#     Parsing block for the default rss
+#
+#     """
+#
+#     def parse_node(self, response, node):
+#         item = {}
+#         print(response)
+#         return
+#
+#         # self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
+#
+#         # title = node.xpath('title/text()').extract_first()
+#         # item['title'] = cleanhtml(title)
+#         # if title:
+#         #     item['link'] = node.xpath('link/text()').extract_first()
+#         #     item['published'] = node.xpath('pubDate/text()').extract_first()
+#         #     description = node.xpath('description/text()').extract_first()
+#         #     description = cleanhtml(description)
+#         #     item['summary'] = description
+#         #     item['source'] = response.meta.get('source')
+#         #     tagText=str(title)+str(description)
+#         #     countryClass=tags.getCountry(tagText)
+#         #
+#         #     if len(countryClass) > 0:
+#         #
+#         #         item['category'] = "India"
+#         #     else:
+#         #
+#         #         item['category'] = response.meta.get('category')
+#         #
+#         #     if source == "The Guardian":
+#         #         item['image'] = node.xpath("*[local-name()='content'][@width='460']/@url").extract_first()
+#         #     else:
+#         #         media = node.xpath("*[local-name()='content']/@url").extract_first()
+#         #         thumb = node.xpath("*[local-name()='thumbnail']/@url").extract_first()
+#         #         full = node.xpath("fullimage/text()").extract_first()
+#         #         image = node.xpath("image/text()").extract_first()
+#         #         enclosure = node.xpath("enclosure/@url").extract_first()
+#         #         if media:
+#         #             item['image'] = media
+#         #         elif thumb:
+#         #             item['image'] = thumb
+#         #         elif enclosure:
+#         #             item['image'] = enclosure
+#         #         elif image:
+#         #             item['image'] = image
+#         #         elif full:
+#         #             item['image'] = full
+#         #
+#         #
+#         #     item['type'] = response.meta.get('type')
+#         #     item['uTag'] = hashlib.sha256(
+#         #         title.encode('utf-8')).hexdigest()[:16]
+#         #     item['created_at'] = str(datetime.now())
+#         #     Rake = RAKE.Rake('stopwords_en.txt')
+#         #     words = Rake.run(title)
+#         #     tagWordArray = []
+#         #     for word in words:
+#         #         tagWordArray.append(word[0].title())
+#         #     item['tags'] = tagWordArray
+#         #     db.Temp.insert_one(item)
+#         #     insertingBlock(item, source, category)
+#
+#     def handle_spider_closed(spider, reason):
+#         print("Closed handle")
+#
+#
+#
+#
+#     dispatcher.connect(handle_spider_closed, signals.spider_closed)
 
 def cleanhtml(raw_html):
     """
