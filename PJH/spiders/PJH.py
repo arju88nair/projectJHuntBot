@@ -12,7 +12,6 @@ from PJH.scrapLinks import Links
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
-from PJH.geography import tags
 from bson.json_util import dumps
 import pprint
 
@@ -34,7 +33,7 @@ class Spider(XMLFeedSpider):
 
     """
     name = "scrap"
-    allowed_domains = ["feeds.feedburner.com"]
+    allowed_domains = [""]
     itertag = 'item'
 
     logging.getLogger("requests").setLevel(logging.WARNING)
@@ -51,10 +50,7 @@ class Spider(XMLFeedSpider):
 
         for url in Links:
             request = scrapy.Request(url=url[0], callback=self.parse)
-            request.meta['source'] = url[1]
-            request.meta['category'] = url[2]
-            request.meta['type'] = url[3]
-            request.meta['url'] = url[0]
+            print(request)
             # logging.error('For ' + url[0] + ' in ' + url[2])
             yield request
 
@@ -164,24 +160,7 @@ def insertingBlock(item, source, category):
        Inserting  function with respect to the collection name parsed
 
        """
-    if db[category].count() == 0:
-        db[category].insert_one(item)
-    else:
-        tags = str(item['uTag'])
-        if db.Main.find_one(
-                {'uTag': tags}, {'_id': 1}):
-            pass
-        else:
-            insertDoc = db.Main.insert_one(item)
-            db[category].insert_one(item)
-            if insertDoc:
-                logging.debug('Inserted new for ' + category + "   for  " + source
-                              )
-                logging.debug('\n')
-            else:
-                logging.debug('Error in insertion for ' +
-                              category + "   for  " + source)
-                logging.debug('\n')
+
 
 
 # def randomiseInsert():
@@ -195,33 +174,4 @@ def insertingBlock(item, source, category):
 #         logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
 
 
-def popularInsert():
-    popular = list(db.PopularPosts.aggregate([
-        {
-            '$lookup':
-                {
-                    'from': "Main",
-                    'localField': "idPost",
-                    'foreignField': "uTag",
-                    'as': "Main"
-                }
-        },
-        {
-            '$project': {
-                '_id': 1,
-                "idPost": 1,
-                "Main": 1,
-                "count": {'$size': "$users"}
-
-            }
-        },
-
-        {'$sort': {'count': -1, 'created_at': -1}},
-        {
-            '$limit': 8
-        }
-    ]))
-    db.Popular.remove()
-    for item in popular:
-        db.Popular.insert(item)
 
