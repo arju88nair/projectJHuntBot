@@ -14,6 +14,15 @@ BOT_NAME = 'PJH'
 SPIDER_MODULES = ['PJH.spiders']
 NEWSPIDER_MODULE = 'PJH.spiders'
 
+MONGODB_URI = "localhost:27017"
+# MONGODB_PORT = 27017
+MONGODB_DB = "PJH"
+# MONGODB_COLLECTION = "job_cat"
+LOG_FILE = ''
+LOG_ENABLED = False
+LOG_LEVEL = 'WARNING'
+LOG_STDOUT = False
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'PJH (+http://www.yourdomain.com)'
@@ -70,9 +79,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'PJH.pipelines.PJHPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'PJH.pipelines.PJHPipeline': 1,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

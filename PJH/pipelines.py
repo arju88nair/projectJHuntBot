@@ -7,7 +7,7 @@
 import pymongo
 from scrapy.exceptions import DropItem
 
-class MongoDBPipeline(object):
+class PJHPipeline(object):
 
     # collection_name = 'job_cat'
 
