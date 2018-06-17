@@ -1,14 +1,21 @@
-# -*- coding: utf-8 -*-
-
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 
+class Job_Categories_Item(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
 
-class PJHItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class Job_Item(scrapy.Item):
+    title = scrapy.Field()
+    hiringOrganization = scrapy.Field()
+    experienceRequirements = scrapy.Field()
+    jobLocation = scrapy.Field()
+    skills = scrapy.Field()
+    JobDescription = scrapy.Field()
+    baseSalary = scrapy.Field()
+    jobPoster = scrapy.Field()
+    date = scrapy.Field()
+    link = scrapy.Field()
+    jobType = scrapy.Field()
+    jobCategory = scrapy.Field()
+    depth = scrapy.Field()
+    jobCategoryLink = scrapy.Field()

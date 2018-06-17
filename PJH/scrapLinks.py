@@ -1,5 +1,5 @@
 Links = [
-    ["https://www.theguardian.com/world/rss",
+    ["https://www.naukri.com/php-jobs",
      "The Guardian", "World", "Top"],
 
 
