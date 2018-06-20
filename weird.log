@@ -1,12 +1,12 @@
-Fri, 15 Jun 2018 23:24:44 log.py[line:146] INFO Scrapy 1.5.0 started (bot: PJH)
-Fri, 15 Jun 2018 23:24:44 log.py[line:149] INFO Versions: lxml 3.5.0.0, libxml2 2.9.4, cssselect 1.0.3, parsel 1.4.0, w3lib 1.19.0, Twisted 17.9.0, Python 3.5.2 (default, Nov 23 2017, 16:37:01) - [GCC 5.4.0 20160609], pyOpenSSL 17.5.0 (OpenSSL 1.1.0h  27 Mar 2018), cryptography 2.2.2, Platform Linux-4.13.0-45-generic-x86_64-with-Ubuntu-16.04-xenial
-Fri, 15 Jun 2018 23:24:44 crawler.py[line:38] INFO Overridden settings: {'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['PJH.spiders'], 'NEWSPIDER_MODULE': 'PJH.spiders', 'BOT_NAME': 'PJH', 'CONCURRENT_REQUESTS': 32}
-Fri, 15 Jun 2018 23:24:44 middleware.py[line:53] INFO Enabled extensions:
-['scrapy.extensions.telnet.TelnetConsole',
+Wed, 20 Jun 2018 21:09:25 log.py[line:146] INFO Scrapy 1.5.0 started (bot: PJH)
+Wed, 20 Jun 2018 21:09:25 log.py[line:149] INFO Versions: lxml 3.5.0.0, libxml2 2.9.4, cssselect 1.0.3, parsel 1.4.0, w3lib 1.19.0, Twisted 17.9.0, Python 3.5.2 (default, Nov 23 2017, 16:37:01) - [GCC 5.4.0 20160609], pyOpenSSL 17.5.0 (OpenSSL 1.1.0h  27 Mar 2018), cryptography 2.2.2, Platform Linux-4.13.0-45-generic-x86_64-with-Ubuntu-16.04-xenial
+Wed, 20 Jun 2018 21:09:25 crawler.py[line:38] INFO Overridden settings: {'BOT_NAME': 'PJH', 'LOG_FILE': '', 'LOG_LEVEL': 'WARNING', 'NEWSPIDER_MODULE': 'PJH.spiders', 'SPIDER_MODULES': ['PJH.spiders'], 'CONCURRENT_REQUESTS': 32, 'ROBOTSTXT_OBEY': True, 'LOG_ENABLED': False}
+Wed, 20 Jun 2018 21:09:25 middleware.py[line:53] INFO Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
  'scrapy.extensions.logstats.LogStats',
  'scrapy.extensions.memusage.MemoryUsage',
- 'scrapy.extensions.corestats.CoreStats']
-Fri, 15 Jun 2018 23:24:44 middleware.py[line:53] INFO Enabled downloader middlewares:
+ 'scrapy.extensions.telnet.TelnetConsole']
+Wed, 20 Jun 2018 21:09:25 middleware.py[line:53] INFO Enabled downloader middlewares:
 ['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
  'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
  'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
@@ -21,39 +21,61 @@ Fri, 15 Jun 2018 23:24:44 middleware.py[line:53] INFO Enabled downloader middlew
  'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
  'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
  'scrapy.downloadermiddlewares.stats.DownloaderStats']
-Fri, 15 Jun 2018 23:24:44 middleware.py[line:53] INFO Enabled spider middlewares:
+Wed, 20 Jun 2018 21:09:25 middleware.py[line:53] INFO Enabled spider middlewares:
 ['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
  'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
  'scrapy.spidermiddlewares.referer.RefererMiddleware',
  'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
  'scrapy.spidermiddlewares.depth.DepthMiddleware']
-Fri, 15 Jun 2018 23:24:44 middleware.py[line:53] INFO Enabled item pipelines:
-[]
-Fri, 15 Jun 2018 23:24:44 engine.py[line:256] INFO Spider opened
-Fri, 15 Jun 2018 23:24:44 logstats.py[line:48] INFO Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
-Fri, 15 Jun 2018 23:24:44 telnet.py[line:60] DEBUG Telnet console listening on 127.0.0.1:6023
-Fri, 15 Jun 2018 23:24:44 tls.py[line:71] WARNING Remote certificate is not valid for hostname "www.naukri.com"; '*.naukri.com'!='www.naukri.com'
-Fri, 15 Jun 2018 23:24:44 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/robots.txt> (referer: None)
-Fri, 15 Jun 2018 23:24:44 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/php-jobs> (referer: None)
-Fri, 15 Jun 2018 23:24:44 engine.py[line:295] INFO Closing spider (finished)
-Fri, 15 Jun 2018 23:24:44 statscollectors.py[line:47] INFO Dumping Scrapy stats:
-{'downloader/request_bytes': 1004,
+Wed, 20 Jun 2018 21:09:25 middleware.py[line:53] INFO Enabled item pipelines:
+['PJH.pipelines.PJHPipeline']
+Wed, 20 Jun 2018 21:09:25 engine.py[line:256] INFO Spider opened
+Wed, 20 Jun 2018 21:09:25 logstats.py[line:48] INFO Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+Wed, 20 Jun 2018 21:09:25 telnet.py[line:60] DEBUG Telnet console listening on 127.0.0.1:6023
+Wed, 20 Jun 2018 21:09:28 tls.py[line:71] WARNING Remote certificate is not valid for hostname "www.naukri.com"; '*.naukri.com'!='www.naukri.com'
+Wed, 20 Jun 2018 21:09:29 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/robots.txt> (referer: None)
+Wed, 20 Jun 2018 21:09:31 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/php-jobs> (referer: None)
+Wed, 20 Jun 2018 21:09:31 scraper.py[line:158] ERROR Spider error processing <GET https://www.naukri.com/php-jobs> (referer: None)
+Traceback (most recent call last):
+  File "/home/nar/Desktop/PJH/PJH/spiders/PJH.py", line 101, in parse
+    item['jobType'] = j.xpath('span/@class').extract()[1]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/usr/local/lib/python3.5/dist-packages/scrapy/spidermiddlewares/offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "/usr/local/lib/python3.5/dist-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/usr/local/lib/python3.5/dist-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/usr/local/lib/python3.5/dist-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/nar/Desktop/PJH/PJH/spiders/PJH.py", line 110, in parse
+    except exception as e:
+NameError: name 'exception' is not defined
+Wed, 20 Jun 2018 21:09:31 engine.py[line:295] INFO Closing spider (finished)
+Wed, 20 Jun 2018 21:09:31 statscollectors.py[line:47] INFO Dumping Scrapy stats:
+{'downloader/request_bytes': 1007,
  'downloader/request_count': 2,
  'downloader/request_method_count/GET': 2,
- 'downloader/response_bytes': 31610,
+ 'downloader/response_bytes': 32115,
  'downloader/response_count': 2,
  'downloader/response_status_count/200': 2,
  'finish_reason': 'finished',
- 'finish_time': datetime.datetime(2018, 6, 15, 17, 54, 44, 908621),
- 'log_count/DEBUG': 3,
- 'log_count/INFO': 7,
+ 'finish_time': datetime.datetime(2018, 6, 20, 15, 39, 31, 367228),
+ 'log_count/ERROR': 1,
  'log_count/WARNING': 1,
- 'memusage/max': 54427648,
- 'memusage/startup': 54427648,
+ 'memusage/max': 54398976,
+ 'memusage/startup': 54398976,
  'response_received_count': 2,
  'scheduler/dequeued': 1,
  'scheduler/dequeued/memory': 1,
  'scheduler/enqueued': 1,
  'scheduler/enqueued/memory': 1,
- 'start_time': datetime.datetime(2018, 6, 15, 17, 54, 44, 88050)}
-Fri, 15 Jun 2018 23:24:44 engine.py[line:326] INFO Spider closed (finished)
+ 'spider_exceptions/NameError': 1,
+ 'start_time': datetime.datetime(2018, 6, 20, 15, 39, 25, 699916)}
+Wed, 20 Jun 2018 21:09:31 engine.py[line:326] INFO Spider closed (finished)

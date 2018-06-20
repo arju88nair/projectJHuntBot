@@ -9,6 +9,7 @@ import hashlib
 from scrapy.spiders import XMLFeedSpider
 from pymongo import MongoClient
 from PJH.scrapLinks import Links
+from PJH.items import Job_Item
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
@@ -31,23 +32,21 @@ db = connection.Culminate
 
 # class Spider(scrapy.Spider):
 #     name = "scrap"
-#
+# 
 #     def start_requests(self):
 #         urls = [
-#             'https://www.naukri.com/php-jobs',
+#             'https://wiki.vtiger.com/index.php/Webservices_tutorials',
 #         ]
 #         for url in urls:
 #             yield scrapy.Request(url=url, callback=self.parse)
-#
-#     def parse(self, response,node):
-#         title = node.xpath('title/text()').extract_first()
-#         print(title)
-#         return
-#
-#         # filename = 'quotes-%s.html'
-#         # with open(filename, 'wb') as f:
-#         #     f.write(response.body)
-#         # self.log('Saved file %s' % filename)
+# 
+#     def parse(self, response):
+# 
+# 
+#         filename = 'quotes-%s.html'
+#         with open(filename, 'wb') as f:
+#             f.write(response.body)
+#         self.log('Saved file %s' % filename)
 
 
 
@@ -80,9 +79,36 @@ class Spider(XMLFeedSpider):
     """
 
     def parse(self, response):
-        item = {}
-        print(response.body)
-        return
+        try:
+            jobc = "d"
+            parentLink = "S"
+            count = 0
+            print(response.xpath('//div[@itemtype="http://schema.org/JobPosting"]'))
+            for j in response.xpath('//div[@itemtype="http://schema.org/JobPosting"]'):
+                item = Job_Item()
+                item['jobCategory'] = jobc
+                item['depth'] = count
+                item['jobCategoryLink'] = parentLink
+                item['link'] = j.xpath('a/@href').extract()
+                item['title'] = j.xpath('a/span[@itemprop="hiringOrganization"]/text()').extract()
+                item['experienceRequirements'] = j.xpath('a/span[@itemprop="experienceRequirements"]/text()').extract()
+                item['jobLocation'] = j.xpath('a/span/span[@itemprop="jobLocation"]/text()').extract()
+                item['skills'] = j.xpath('a/div/div/span[@itemprop="skills"]/text()').extract()
+                item['JobDescription'] = j.xpath('a/div/span[@itemprop="description"]/text()').extract()
+                item['baseSalary'] = j.xpath('div/span[@itemprop="baseSalary"]/text()').extract()
+                item['jobPoster'] = j.xpath('div/div/a/text()').extract()
+                item['date'] = j.xpath('div/div/span[@class="date"]/text()').extract()
+                item['jobType'] = j.xpath('span/@class').extract()[1]
+                print(item)
+                print("sdddssd")
+                yield item
+            next_page = response.xpath('//div[@class="pagination"]/a/@href').extract()
+            if next_page != []:
+                ind = response.xpath('//div[@class="pagination"]/a/button/text()').extract().index(u'Next')
+                yield scrapy.Request(response.urljoin(next_page[ind]), callback=self.parse_jobs \
+                                     , meta={'jobCategory': jobc, 'count': count, 'parentLink': parentLink})
+        except exception as e:
+            print(e)
 
         # self.logger.info('Hi, this is a <%s> node!: %s', self.itertag, ''.join(node.extract()))
 
