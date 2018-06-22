@@ -4,12 +4,14 @@ import datetime
 import logging
 import time
 import RAKE
+from scrapy.http import Request
 from datetime import datetime
 import hashlib
 from scrapy.spiders import XMLFeedSpider
 from pymongo import MongoClient
 from PJH.scrapLinks import Links
 from PJH.items import Job_Item
+from PJH.items import Job_Categories_Item
 from scrapy.xlib.pydispatch import dispatcher
 from scrapy import signals
 from random import shuffle
@@ -80,12 +82,13 @@ class Spider(XMLFeedSpider):
 
     def parse(self, response):
         try:
-            jobc = "d"
-            parentLink = "S"
+            jobc = response.meta['jobCategory']
+            parentLink = response.meta['parentLink']
             count = 0
-            print(response.xpath('//div[@itemtype="http://schema.org/JobPosting"]'))
+            print(response.xpath('//div[@class="srp_container fl"]'))
             for j in response.xpath('//div[@itemtype="http://schema.org/JobPosting"]'):
                 item = Job_Item()
+                print("d")
                 item['jobCategory'] = jobc
                 item['depth'] = count
                 item['jobCategoryLink'] = parentLink
@@ -99,9 +102,6 @@ class Spider(XMLFeedSpider):
                 item['jobPoster'] = j.xpath('div/div/a/text()').extract()
                 item['date'] = j.xpath('div/div/span[@class="date"]/text()').extract()
                 item['jobType'] = j.xpath('span/@class').extract()[1]
-                print(item)
-                print("sdddssd")
-                yield item
             next_page = response.xpath('//div[@class="pagination"]/a/@href').extract()
             if next_page != []:
                 ind = response.xpath('//div[@class="pagination"]/a/button/text()').extract().index(u'Next')
@@ -171,6 +171,22 @@ class Spider(XMLFeedSpider):
 
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
+
+
+
+def parse_Categories(self,response):
+    for j in response.xpath('//div[@class="lmrWrap wrap"]/div/div/div/a'):
+        item = Job_Categories_Item()
+        title = j.xpath('text()').extract()
+        url = j.xpath('@href').extract()
+        if title != [] and url != []:
+            item['link'] = url[0]
+            item['title'] = title[0]
+            count = 0
+            yield Request(url[0], callback=self.parse_jobs,
+                          meta={'jobCategory': title[0], 'count': count, 'parentLink': url[0]})
+            yield item
+
 
 def cleanhtml(raw_html):
     """
