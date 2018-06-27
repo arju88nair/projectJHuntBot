@@ -18,8 +18,6 @@ from scrapy.shell import inspect_response
 
 import pprint
 
-
-
 import json
 
 now = datetime.now()
@@ -49,7 +47,6 @@ db = connection.Culminate
 #         self.log('Saved file %s' % filename)
 
 
-
 class Spider(XMLFeedSpider):
     """
         Active main spider which crawls through the links provided
@@ -70,7 +67,7 @@ class Spider(XMLFeedSpider):
 
     def start_requests(self):
         for url in Links:
-             yield scrapy.Request(url=url[0], callback=self.parse)
+            yield scrapy.Request(url=url[0], callback=self.parse)
 
     """
 
@@ -78,29 +75,35 @@ class Spider(XMLFeedSpider):
 
     """
 
-    def parse(self,response):
+    def parse(self, response):
         # self.logger.info('Parse function called on %s', response.url)
-        # print(response.xpath('//div[@class="wrap"]'))
+        # print(response.xpath('//div[@class="srp_container fl  "]/div/'))
+        # print(response.xpath('//*[@type="tuple"]'))
 
-        for j in response.xpath('//div[@class="srp_container fl  "]'):
-            print(j)
-            item = Job_Categories_Item()
-            title = j.xpath('text()').extract()
+        for j in response.xpath('//*[@type="tuple"]'):
+            print(j.xpath('div/span[@class="salary"]'))
+            print(j.xpath('a/span[@class="org"]/text()').extract())
+            job = Job_Item()
+            job['title'] = j.xpath('a/span[@class="org"]/text()').extract()
+            job['link'] = j.xpath('a/@href').extract()
+            job['experience'] = j.xpath('a/span[@class="exp"]/text()').extract_first()
+            job['skills'] = j.xpath('a/div/div/span[@class="skill"]/text()').extract()
+            job['JobDescription'] = j.xpath('a/div/span[@class="desc"]/text()').extract()
+            job['baseSalary'] = j.xpath('div/span[@class="salary"]/text()').extract_first()
+            job['jobPoster'] = j.xpath('div/div/a/text()').extract()
+            job['date'] = j.xpath('div/div/span[@class="date"]/text()').extract()
+            job['jobType'] = j.xpath('span/@class').extract()[1]
+            # print(job)
+            # item = Job_Categories_Item()
+            # title = j.xpath('text()').extract()
 
-
-
-            
     def handle_spider_closed(spider, reason):
         print("Closed handle")
-
-
-
 
     dispatcher.connect(handle_spider_closed, signals.spider_closed)
 
 
-
-def parse_Categories(self,response):
+def parse_Categories(self, response):
     for j in response.xpath('//div[@class="lmrWrap wrap"]/div/div/div/a'):
         item = Job_Categories_Item()
         title = j.xpath('text()').extract()
@@ -148,8 +151,6 @@ def insertingBlock(item, source, category):
 
        """
 
-
-
 # def randomiseInsert():
 #     temp = list(db.Temp.find({}, {'_id': False}))
 #     shuffle(temp)
@@ -159,6 +160,3 @@ def insertingBlock(item, source, category):
 #         db.Temp.drop()
 #         logging.info('Work time:' + str(time.time() - start))
 #         logging.info('Ended at ' + now.strftime("%Y-%m-%d %H:%M"))
-
-
-
