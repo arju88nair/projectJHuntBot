@@ -81,22 +81,27 @@ class Spider(XMLFeedSpider):
         # print(response.xpath('//*[@type="tuple"]'))
 
         for j in response.xpath('//*[@type="tuple"]'):
-            print(j.xpath('div/span[@class="salary"]'))
-            print(j.xpath('a/span[@class="org"]/text()').extract())
-            job = Job_Item()
-            job['title'] = j.xpath('a/span[@class="org"]/text()').extract()
-            job['link'] = j.xpath('a/@href').extract()
-            job['experience'] = j.xpath('a/span[@class="exp"]/text()').extract_first()
-            job['skills'] = j.xpath('a/div/div/span[@class="skill"]/text()').extract()
-            job['JobDescription'] = j.xpath('a/div/span[@class="desc"]/text()').extract()
-            job['baseSalary'] = j.xpath('div/span[@class="salary"]/text()').extract_first()
-            job['jobPoster'] = j.xpath('div/div/a/text()').extract()
-            job['date'] = j.xpath('div/div/span[@class="date"]/text()').extract()
-            job['jobType'] = j.xpath('span/@class').extract()[1]
-            # print(job)
-            # item = Job_Categories_Item()
-            # title = j.xpath('text()').extract()
+            # print(j.xpath('div/div[@class="rec_details"]/a[@class="rec_name active"]/text()').extract())
 
+            # print(j.xpath('a/span[@class="loc"]/span/text()').extract())
+            job = Job_Item()
+            try:
+                job['title'] = j.xpath('a/ul/li/text()').extract()
+                job['hiringOrganization'] = j.xpath('a/span[@class="org"]/text()').extract()
+                job['link'] = j.xpath('a/@href').extract()
+                job['experienceRequirements'] = j.xpath('a/span[@class="exp"]/text()').extract()
+                job['jobLocation'] = j.xpath('a/span[@class="loc"]/span/text()').extract()
+                job['skills'] = j.xpath('a/div/div/span[@class="skill"]/text()').extract()
+                job['JobDescription'] = j.xpath('a/div/span[@class="desc"]/text()').extract()
+                job['baseSalary'] = j.xpath('div/span[@class="salary  "]/text()').extract()
+                job['jobPoster'] = j.xpath('div/div[@class="rec_details"]/a[@class="rec_name active"]/text()').extract()
+                job['date'] = j.xpath('div/div[@class="rec_details"]/span[@class="date"]/text()').extract()
+
+            except AttributeError:
+                print("Baljh")
+
+
+                
     def handle_spider_closed(spider, reason):
         print("Closed handle")
 
