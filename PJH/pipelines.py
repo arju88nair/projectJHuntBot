@@ -19,7 +19,7 @@ class PJHPipeline(object):
     def from_crawler(cls, crawler):
         return cls(
             mongo_uri=crawler.settings.get('MONGODB_URI'),
-            mongo_db=crawler.settings.get('MONGO_DB','Naukri')
+            mongo_db=crawler.settings.get('MONGO_DB','PJH')
         )
 
     def open_spider(self, spider):
@@ -30,6 +30,7 @@ class PJHPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
+        print("DFfddfdf")
         self.collection_name = 'jobs'
         self.db[self.collection_name].insert(dict(item))
         return item

@@ -76,26 +76,22 @@ class Spider(XMLFeedSpider):
     """
 
     def parse(self, response):
-        # self.logger.info('Parse function called on %s', response.url)
-        # print(response.xpath('//div[@class="srp_container fl  "]/div/'))
-        # print(response.xpath('//*[@type="tuple"]'))
 
         for j in response.xpath('//*[@type="tuple"]'):
-            # print(j.xpath('div/div[@class="rec_details"]/a[@class="rec_name active"]/text()').extract())
-
-            # print(j.xpath('a/span[@class="loc"]/span/text()').extract())
-            job = Job_Item()
+            item = Job_Item()
             try:
-                job['title'] = j.xpath('a/ul/li/text()').extract()
-                job['hiringOrganization'] = j.xpath('a/span[@class="org"]/text()').extract()
-                job['link'] = j.xpath('a/@href').extract()
-                job['experienceRequirements'] = j.xpath('a/span[@class="exp"]/text()').extract()
-                job['jobLocation'] = j.xpath('a/span[@class="loc"]/span/text()').extract()
-                job['skills'] = j.xpath('a/div/div/span[@class="skill"]/text()').extract()
-                job['JobDescription'] = j.xpath('a/div/span[@class="desc"]/text()').extract()
-                job['baseSalary'] = j.xpath('div/span[@class="salary  "]/text()').extract()
-                job['jobPoster'] = j.xpath('div/div[@class="rec_details"]/a[@class="rec_name active"]/text()').extract()
-                job['date'] = j.xpath('div/div[@class="rec_details"]/span[@class="date"]/text()').extract()
+                item['title'] = j.xpath('a/ul/li/text()').extract_first()
+                item['hiringOrganization'] = j.xpath('a/span[@class="org"]/text()').extract_first()
+                item['link'] = j.xpath('a/@href').extract_first()
+                item['experienceRequirements'] = j.xpath('a/span[@class="exp"]/text()').extract_first()
+                item['jobLocation'] = j.xpath('a/span[@class="loc"]/span/text()').extract_first()
+                item['skills'] = j.xpath('a/div/div/span[@class="skill"]/text()').extract_first()
+                item['JobDescription'] = j.xpath('a/div/span[@class="desc"]/text()').extract_first()
+                item['baseSalary'] = j.xpath('div/span[@class="salary  "]/text()').extract_first()
+                item['jobPoster'] = j.xpath('div/div[@class="rec_details"]/a[@class="rec_name active"]/text()').extract_first()
+                item['date'] = j.xpath('div/div[@class="rec_details"]/span[@class="date"]/text()').extract_first()
+                yield item
+                print(item)
 
             except AttributeError:
                 print("Baljh")
@@ -111,8 +107,8 @@ class Spider(XMLFeedSpider):
 def parse_Categories(self, response):
     for j in response.xpath('//div[@class="lmrWrap wrap"]/div/div/div/a'):
         item = Job_Categories_Item()
-        title = j.xpath('text()').extract()
-        url = j.xpath('@href').extract()
+        title = j.xpath('text()').extract_first()
+        url = j.xpath('@href').extract_first()
         if title != [] and url != []:
             item['link'] = url[0]
             item['title'] = title[0]

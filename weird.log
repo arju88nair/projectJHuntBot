@@ -1,12 +1,12 @@
-Sat, 07 Jul 2018 21:42:57 log.py[line:146] INFO Scrapy 1.5.0 started (bot: PJH)
-Sat, 07 Jul 2018 21:42:57 log.py[line:149] INFO Versions: lxml 4.2.1.0, libxml2 2.9.8, cssselect 1.0.3, parsel 1.4.0, w3lib 1.19.0, Twisted 18.4.0, Python 2.7.12 (default, Dec  4 2017, 14:50:18) - [GCC 5.4.0 20160609], pyOpenSSL 18.0.0 (OpenSSL 1.1.0h  27 Mar 2018), cryptography 2.2.2, Platform Linux-4.15.0-24-generic-x86_64-with-Ubuntu-16.04-xenial
-Sat, 07 Jul 2018 21:42:57 crawler.py[line:38] INFO Overridden settings: {'NEWSPIDER_MODULE': 'PJH.spiders', 'BOT_NAME': 'PJH', 'ROBOTSTXT_OBEY': True, 'LOG_LEVEL': 'WARNING', 'CONCURRENT_REQUESTS': 32, 'SPIDER_MODULES': ['PJH.spiders'], 'LOG_ENABLED': False, 'LOG_FILE': ''}
-Sat, 07 Jul 2018 21:42:57 middleware.py[line:53] INFO Enabled extensions:
+Sun, 08 Jul 2018 22:42:07 log.py[line:146] INFO Scrapy 1.5.0 started (bot: PJH)
+Sun, 08 Jul 2018 22:42:07 log.py[line:149] INFO Versions: lxml 4.2.1.0, libxml2 2.9.8, cssselect 1.0.3, parsel 1.4.0, w3lib 1.19.0, Twisted 18.4.0, Python 2.7.12 (default, Dec  4 2017, 14:50:18) - [GCC 5.4.0 20160609], pyOpenSSL 18.0.0 (OpenSSL 1.1.0h  27 Mar 2018), cryptography 2.2.2, Platform Linux-4.15.0-24-generic-x86_64-with-Ubuntu-16.04-xenial
+Sun, 08 Jul 2018 22:42:07 crawler.py[line:38] INFO Overridden settings: {'NEWSPIDER_MODULE': 'PJH.spiders', 'BOT_NAME': 'PJH', 'ROBOTSTXT_OBEY': True, 'LOG_LEVEL': 'WARNING', 'CONCURRENT_REQUESTS': 32, 'SPIDER_MODULES': ['PJH.spiders'], 'LOG_ENABLED': False, 'LOG_FILE': ''}
+Sun, 08 Jul 2018 22:42:07 middleware.py[line:53] INFO Enabled extensions:
 ['scrapy.extensions.memusage.MemoryUsage',
  'scrapy.extensions.logstats.LogStats',
  'scrapy.extensions.telnet.TelnetConsole',
  'scrapy.extensions.corestats.CoreStats']
-Sat, 07 Jul 2018 21:42:57 middleware.py[line:53] INFO Enabled downloader middlewares:
+Sun, 08 Jul 2018 22:42:07 middleware.py[line:53] INFO Enabled downloader middlewares:
 ['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
  'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
  'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
@@ -21,35 +21,597 @@ Sat, 07 Jul 2018 21:42:57 middleware.py[line:53] INFO Enabled downloader middlew
  'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
  'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
  'scrapy.downloadermiddlewares.stats.DownloaderStats']
-Sat, 07 Jul 2018 21:42:57 middleware.py[line:53] INFO Enabled spider middlewares:
+Sun, 08 Jul 2018 22:42:07 middleware.py[line:53] INFO Enabled spider middlewares:
 ['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
  'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
  'scrapy.spidermiddlewares.referer.RefererMiddleware',
  'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
  'scrapy.spidermiddlewares.depth.DepthMiddleware']
-Sat, 07 Jul 2018 21:42:57 middleware.py[line:53] INFO Enabled item pipelines:
+Sun, 08 Jul 2018 22:42:07 middleware.py[line:53] INFO Enabled item pipelines:
 ['PJH.pipelines.PJHPipeline']
-Sat, 07 Jul 2018 21:42:57 engine.py[line:256] INFO Spider opened
-Sat, 07 Jul 2018 21:42:57 logstats.py[line:48] INFO Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
-Sat, 07 Jul 2018 21:42:57 telnet.py[line:60] DEBUG Telnet console listening on 127.0.0.1:6023
-Sat, 07 Jul 2018 21:42:57 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/robots.txt> (referer: None)
-Sat, 07 Jul 2018 21:42:58 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/php-jobs> (referer: None)
-Sat, 07 Jul 2018 21:42:58 engine.py[line:295] INFO Closing spider (finished)
-Sat, 07 Jul 2018 21:42:58 statscollectors.py[line:47] INFO Dumping Scrapy stats:
-{'downloader/request_bytes': 925,
+Sun, 08 Jul 2018 22:42:07 engine.py[line:256] INFO Spider opened
+Sun, 08 Jul 2018 22:42:07 logstats.py[line:48] INFO Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+Sun, 08 Jul 2018 22:42:07 telnet.py[line:60] DEBUG Telnet console listening on 127.0.0.1:6023
+Sun, 08 Jul 2018 22:42:07 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/robots.txt> (referer: None)
+Sun, 08 Jul 2018 22:42:08 engine.py[line:238] DEBUG Crawled (200) <GET https://www.naukri.com/php-jobs> (referer: None)
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': None,
+ 'experienceRequirements': u'2-7 yrs',
+ 'hiringOrganization': u'DBXento Systems Pvt. Ltd.',
+ 'jobLocation': u'Pune',
+ 'jobPoster': u'  Sachitanand Gudup  ',
+ 'link': u'https://www.naukri.com/job-listings-Xento-Systems-is-Hiring-PHP-Professionals-DBXento-Systems-Pvt-Ltd-Pune-2-to-7-years-050718007225?src=nfl&sid=15310699275724&xp=1&px=1',
+ 'skills': u'PHP, Codeigniter, Smarty, Zend, Yii, LAMP, Web Development, Apache...',
+ 'title': u'Xento Systems is Hiring PHP Professionals'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'we also provide all type of support to our candidate like reference, live project experience, experience ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'Today',
+ 'experienceRequirements': u'0-1 yrs',
+ 'hiringOrganization': u'WEBTRACKKER TECHNOLOGY PRIVATE LIMITED',
+ 'jobLocation': u'Delhi NCR',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Trainee-WEBTRACKKER-TECHNOLOGY-PRIVATE-LIMITED-Delhi-NCR-0-to-1-years-080718000850?src=jobsearchDesk&sid=15310699275724&xp=2&px=1',
+ 'skills': u'Python, Java, J2Ee, C++, Hadoop, PHP, Big Data, Web Technologies...',
+ 'title': u'PHP Developer Trainee'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'we also provide all type of support to our candidate like reference, live project experience, experience ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'Today',
+ 'experienceRequirements': u'0-1 yrs',
+ 'hiringOrganization': u'WEBTRACKKER TECHNOLOGY PRIVATE LIMITED',
+ 'jobLocation': u'Delhi NCR',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Trainee-WEBTRACKKER-TECHNOLOGY-PRIVATE-LIMITED-Delhi-NCR-0-to-1-years-080718000848?src=jobsearchDesk&sid=15310699275724&xp=3&px=1',
+ 'skills': u'Python, Java, J2Ee, C++, Hadoop, PHP, Big Data, Web Technologies...',
+ 'title': u'PHP Trainee'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'we also provide all type of support to our candidate like reference, live project experience, experience ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'Today',
+ 'experienceRequirements': u'0-1 yrs',
+ 'hiringOrganization': u'WEBTRACKKER TECHNOLOGY PRIVATE LIMITED',
+ 'jobLocation': u'Delhi NCR',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Web-Developer-WEBTRACKKER-TECHNOLOGY-PRIVATE-LIMITED-Delhi-NCR-0-to-1-years-080718000846?src=jobsearchDesk&sid=15310699275724&xp=4&px=1',
+ 'skills': u'Python, Java, J2Ee, C++, Hadoop, PHP, Big Data, Web Technologies...',
+ 'title': u'PHP Web Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Must have good communication skill;- Experience required 6 months - 4 years in PHP ;- Strong Logical ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'1-4 yrs',
+ 'hiringOrganization': u'Cyber Infrastructure (P) Limited',
+ 'jobLocation': u'Indore',
+ 'jobPoster': u'  Cyber Infrastructure Pvt Ltd  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Indore-Cyber-Infrastructure-P-Limited-Indore-1-to-4-years-070718003848?src=jobsearchDesk&sid=15310699275724&xp=5&px=1',
+ 'skills': u'PHP, Wordpress, Codeigniter, Symfony, Joomla, Zend, Drupal, Magento, Yii...',
+ 'title': u'PHP Developer, Indore'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Candidates with 3-5 years PHP experience can ...',
+ 'baseSalary': u'    2,50,000 - 4,00,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'Sun E-Soft',
+ 'jobLocation': u'Coimbatore',
+ 'jobPoster': u'  Damaodaran  ',
+ 'link': u'https://www.naukri.com/job-listings-Senior-PHP-Developer-Sun-E-Soft-Coimbatore-3-to-5-years-070718002236?src=jobsearchDesk&sid=15310699275724&xp=6&px=1',
+ 'skills': u'PHP Developer, PHP, Core PHP, SQL, jQuery, Javascript, CSS, HTML, Bootstrap',
+ 'title': u'Senior PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'2+ years experience with PHP or Node.js;2+ years experience with relational databases;2+ years ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'4-6 yrs',
+ 'hiringOrganization': u'Focus Management Consultants Pvt Ltd.',
+ 'jobLocation': u'Mumbai',
+ 'jobPoster': u'  Neelesh Boloor  ',
+ 'link': u'https://www.naukri.com/job-listings-Core-PHP-Developer-Focus-Management-Consultants-Pvt-Ltd-Mumbai-4-to-6-years-070718001978?src=jobsearchDesk&sid=15310699275724&xp=7&px=1',
+ 'skills': u'jquery, mysql, node.js, core php, mongodb, business applications',
+ 'title': u'Core PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    4,00,000 - 9,00,000 P.A. Negotiable  ',
+ 'date': u'Today',
+ 'experienceRequirements': u'5-10 yrs',
+ 'hiringOrganization': u'Easy HR Consulting Services.',
+ 'jobLocation': u'Jaipur',
+ 'jobPoster': u'  Varun Gupta  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Easy-HR-Consulting-Services-Jaipur-5-to-10-years-080718000426?src=jobsearchDesk&sid=15310699275724&xp=8&px=1',
+ 'skills': u'php, wordpress, joomla, magento, zend, laravel, yii, MySQL, linux',
+ 'title': u'PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Person should have sound knowledge and working experience in ...',
+ 'baseSalary': u'    2,50,000 - 3,75,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'First Canvas Ventures Pvt. LTd.',
+ 'jobLocation': u'Delhi NCR(Preet Vihar)',
+ 'jobPoster': u'  Arvind M Mittal  ',
+ 'link': u'https://www.naukri.com/job-listings-Net-PHP-Software-Developers-First-Canvas-Ventures-Pvt-LTd-Delhi-NCR-Preet-Vihar-3-to-5-years-070718004576?src=jobsearchDesk&sid=15310699275724&xp=9&px=1',
+ 'skills': u'ASP.Net MVC, Javascript, JQuery, Bootstrap, MS SQL Server, C#, Azure, MySQL...',
+ 'title': u'.Net / PHP Software Developers'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'The Software Developer should have EITHER of the following skill sets mentioned:;Experience in Using ...',
+ 'baseSalary': u'    4,00,000 - 6,00,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'Silicon Interfaces pvt ltd',
+ 'jobLocation': u'Bengaluru, Hyderabad, Mumbai',
+ 'jobPoster': u'  Sunil  ',
+ 'link': u'https://www.naukri.com/job-listings-Software-Developer-Python-PHP-SQL-Silicon-Interfaces-pvt-ltd-Bengaluru-Hyderabad-Mumbai-3-to-5-years-070718001800?src=jobsearchDesk&sid=15310699275724&xp=10&px=1',
+ 'skills': u'CSS, MySQL, Javascript, HTML, JQuery, PHP, Ajax, LAMP, Python, Django...',
+ 'title': u'Software Developer - Python, PHP, SQL'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Experience of at least 5 years in Development is what we are looking for with abundant knowledge as a ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'4-9 yrs',
+ 'hiringOrganization': u'Consult PR, Inc.',
+ 'jobLocation': u'Delhi NCR, Lucknow',
+ 'jobPoster': u'  Harsh  ',
+ 'link': u'https://www.naukri.com/job-listings-Senior-PHP-Developer-Consult-PR-Inc-Delhi-NCR-Lucknow-4-to-9-years-070718000096?src=jobsearchDesk&sid=15310699275724&xp=11&px=1',
+ 'skills': u'work from home, night shift, php, cms, Codeigniter, Codeigniter Framework...',
+ 'title': u'Senior PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'A Multinational Company in Exhibition and Event Management.',
+ 'jobLocation': u'Noida',
+ 'jobPoster': u'  HR  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-CORE-PHP-noida-A-Multinational-Company-in-Exhibition-and-Event-Management-Noida-2-to-5-years-070718001030?src=jobsearchDesk&sid=15310699275724&xp=12&px=1',
+ 'skills': u'Core PHP, PHP, MySQL, JQuery, Ajax, HTML5, CSS, Javascript, XML, JSON., API...',
+ 'title': u'PHP Developer- CORE PHP (noida)'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Should be able to join within 15 to 20 days of notice period;Candidate should be flexible working as a ...',
+ 'baseSalary': u'    3,00,000 - 8,00,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-7 yrs',
+ 'hiringOrganization': u'2Coms Consulting Pvt Ltd.',
+ 'jobLocation': u'Mumbai',
+ 'jobPoster': u'  Shakthi Prakash S  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Programing-Mumbai-2Coms-Consulting-Pvt-Ltd-Mumbai-2-to-7-years-070718002944?src=jobsearchDesk&sid=15310699275724&xp=13&px=1',
+ 'skills': u'PHP, CSS, HTML, Wordpress, Javascript, MySQL, JQuery, LAMP, Apache, UX',
+ 'title': u'PHP Programing - Mumbai'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    2,00,000 - 4,75,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-4 yrs',
+ 'hiringOrganization': u'Servocraft HR Solutions Private Limited',
+ 'jobLocation': u'Chennai(Anna Nagar)',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Software-Developer-Servocraft-HR-Solutions-Private-Limited-Chennai-Anna-Nagar-2-to-4-years-070718004660?src=jobsearchDesk&sid=15310699275724&xp=14&px=1',
+ 'skills': u'core php, core php programmer, php developer, php, codeigniter, mysql...',
+ 'title': u'PHP Software Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Build innovative, state-of-the-art applications and collaborate with the User Experience (UX) team ...',
+ 'baseSalary': u'    2,00,000 - 3,50,000 P.A.  ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-4 yrs',
+ 'hiringOrganization': u'RAPID CARE TRANSCRIPTION PRIVATE LIMITED',
+ 'jobLocation': u'Chennai',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-RAPID-CARE-TRANSCRIPTION-PRIVATE-LIMITED-Chennai-2-to-4-years-170518007653?src=jobsearchDesk&sid=15310699275724&xp=15&px=1',
+ 'skills': u'php, core php',
+ 'title': u'PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- A dynamic personality, with good communication skills;Should have proper;- Must have educated from ...',
+ 'baseSalary': u'    1,25,000 - 2,25,000 P.A.  ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'0-3 yrs',
+ 'hiringOrganization': u'Prologic Web Solutions Private Limited',
+ 'jobLocation': u'Noida',
+ 'jobPoster': u'  Tarun  ',
+ 'link': u'https://www.naukri.com/job-listings-Hiring-PHP-Developers-Freshers-Trainees-Interns-Noida-Prologic-Web-Solutions-Private-Limited-Noida-0-to-3-years-060718005511?src=jobsearchDesk&sid=15310699275724&xp=16&px=1',
+ 'skills': u'php, wordpress, mysql, html, jquery, wordpress developer, wordpress program...',
+ 'title': u'Hiring PHP Developers - Freshers / Trainees / Interns- Noida'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'2.\tExperience in Drupal is an added advantage;6.\tExperience with JQUERY, CSS3 and HTML5;7.\tExperience ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'1-4 yrs',
+ 'hiringOrganization': u'Nascent Info Technologies Pvt. Ltd.',
+ 'jobLocation': u'Ahmedabad(Prahlad Nagar)',
+ 'jobPoster': u'  Prakruti Tundeliya  ',
+ 'link': u'https://www.naukri.com/job-listings-Software-Engineer-PHP-Nascent-Info-Technologies-Pvt-Ltd-Ahmedabad-Prahlad-Nagar-1-to-4-years-060718004582?src=jobsearchDesk&sid=15310699275724&xp=17&px=1',
+ 'skills': u'laravel, core php, web services, wordpress, drupal',
+ 'title': u'Software Engineer - PHP'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Proficient in writing clean, well-structured code with proper abstraction and reusability;Self-motivated, ...',
+ 'baseSalary': u'    3,50,000 - 7,50,000 P.A. Salary not a constraint for th...  ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'3-7 yrs',
+ 'hiringOrganization': u'EvolutionCo Digital & Interactive Consultancy  Pvt Ltd',
+ 'jobLocation': u'Mumbai, Bengaluru',
+ 'jobPoster': u'  Apoorva Joshi  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-EvolutionCo-Digital-Interactive-Consultancy-Pvt-Ltd-Mumbai-Bengaluru-3-to-7-years-060718003656?src=jobsearchDesk&sid=15310699275724&xp=18&px=1',
+ 'skills': u'Laravel, JQuery, Ajax, MVC Framework, MySQL, PHP, Redis, Database Design...',
+ 'title': u'PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'At least 2 years of programming experience;Good analytical and communication skills;Hands on experience ...',
+ 'baseSalary': u'    2,00,000 - 7,00,000 P.A.  ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-6 yrs',
+ 'hiringOrganization': u'Skybrowser Pvt. Ltd.',
+ 'jobLocation': u'Chandigarh, Mohali',
+ 'jobPoster': u'  Mr.Shashikant  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-5-Days-Working-Night-Shift-Skybrowser-Pvt-Ltd-Chandigarh-Mohali-2-to-6-years-060718003149?src=jobsearchDesk&sid=15310699275724&xp=19&px=1',
+ 'skills': u'Curl, Javascript, Ajax, JQuery, MySQL, JSON, Core PHP, Web Services, Apache...',
+ 'title': u'PHP Developer || 5 Days Working || Night Shift'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Should be available to join within maximum 30 days;Experience of mentoring junior developers/ freshers ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'Codaemon Softwares Pvt. Ltd',
+ 'jobLocation': u'Pune',
+ 'jobPoster': u'  Sushmita Pattnaik  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-2-5-Years-Codaemon-Softwares-Pvt-Ltd-Pune-2-to-5-years-060718001565?src=jobsearchDesk&sid=15310699275724&xp=20&px=1',
+ 'skills': u'HTML, Javascript, Core PHP, MySQL, CSS, JQuery, Wordpress, Zend...',
+ 'title': u'PHP Developer (2-5 Years)'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Good knowledge of front-end technologies, such as HTML, CSS, Bootstrap, Javascript, Jquery, Less ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'Pivotal Talent Scout',
+ 'jobLocation': u'Trivandrum',
+ 'jobPoster': u'  Aravinthu A  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Symfony-mysql-Pivotal-Talent-Scout-Trivandrum-3-to-5-years-050718901121?src=jobsearchDesk&sid=15310699275724&xp=21&px=1',
+ 'skills': u'Javascript, HTML, CSS, Symfony, MySQL, Core PHP, JQuery, Bootstrap...',
+ 'title': u'PHP Developer - Symfony/mysql'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Should able to do live site maintenance and update;- Candidate should have strong experience of Core ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'Okda Solutions',
+ 'jobLocation': u'Hyderabad',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Codeigniter-Mysql-Okda-Solutions-Hyderabad-3-to-5-years-050718900566?src=jobsearchDesk&sid=15310699275724&xp=22&px=1',
+ 'skills': u'Core PHP, Codeigniter, Javascript, MySQL, JQuery, Wordpress, Ajax, Magneto,...',
+ 'title': u'PHP Developer - Codeigniter/ Mysql'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-4 yrs',
+ 'hiringOrganization': u'Trawex Technologies Pvt. Ltd.',
+ 'jobLocation': u'Bengaluru',
+ 'jobPoster': u'  Manushree  ',
+ 'link': u'https://www.naukri.com/job-listings-Web-Developer-php-php-Developer-Trawex-Technologies-Pvt-Ltd-Bengaluru-2-to-4-years-290618007712?src=jobsearchDesk&sid=15310699275724&xp=23&px=1',
+ 'skills': u'Javascript, CSS, HTML, Ajax, JQuery, JSON, XHTML, Web Development, PHP, Web...',
+ 'title': u'Web Developer/php/php Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-7 yrs',
+ 'hiringOrganization': u'TalkCharge Technologies Pvt. Ltd.',
+ 'jobLocation': u'Gurgaon',
+ 'jobPoster': u'  Sunanda Singh  ',
+ 'link': u'https://www.naukri.com/job-listings-Sr-PHP-Developer-Gurgaon-TalkCharge-Technologies-Pvt-Ltd-Gurgaon-2-to-7-years-070718004262?src=jobsearchDesk&sid=15310699275724&xp=24&px=1',
+ 'skills': u'php, javascript, jquery, mysql, ajax, html5, xml, php developer, php mysql,...',
+ 'title': u'Sr. PHP Developer || Gurgaon'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    2,75,000 - 6,00,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-6 yrs',
+ 'hiringOrganization': u'SourceOne Global Consulting',
+ 'jobLocation': u'Delhi NCR(Okhla)',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Okhla-Phase-1-SourceOne-Global-Consulting-Delhi-NCR-Okhla-2-to-6-years-070718002165?src=jobsearchDesk&sid=15310699275724&xp=25&px=1',
+ 'skills': u'PHP, Codeigniter, GIT, Github, Web Technologies',
+ 'title': u'PHP Developer - Okhla Phase 1'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    3,00,000 - 6,00,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'Sales Force India',
+ 'jobLocation': u'Noida',
+ 'jobPoster': u'  RAMAN KAPOOR  ',
+ 'link': u'https://www.naukri.com/job-listings-Cake-PHP-Developer-Sales-Force-India-Noida-2-to-5-years-070718001814?src=jobsearchDesk&sid=15310699275724&xp=26&px=1',
+ 'skills': u'PHP, CakePHP',
+ 'title': u'Cake PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    4,00,000 - 9,00,000 P.A.  ',
+ 'date': u'Today',
+ 'experienceRequirements': u'3-7 yrs',
+ 'hiringOrganization': u'Vichara Technology (India) Private Limited',
+ 'jobLocation': u'Delhi NCR, Gurgaon',
+ 'jobPoster': u'  Veena Grover  ',
+ 'link': u'https://www.naukri.com/job-listings-Web-Developer-with-PHP-Codeigniter-Vichara-Technology-India-Private-Limited-Delhi-NCR-Gurgaon-3-to-7-years-180618007840?src=jobsearchDesk&sid=15310699275724&xp=27&px=1',
+ 'skills': u'Javascript, JQuery, Codeigniter, PHP, MySQL, UI Development...',
+ 'title': u'Web Developer with PHP Codeigniter'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Good knowledge of Laravel Framework is an added advantage;Holds good command over oral and written ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'1-3 yrs',
+ 'hiringOrganization': u'ORBIT IT HR Solutions',
+ 'jobLocation': u'Ahmedabad, Gandhinagar, Vadodara',
+ 'jobPoster': u'  Falguni Kayasth  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Laravel-Developer-ORBIT-IT-HR-Solutions-Ahmedabad-Gandhinagar-Vadodara-1-to-3-years-060718001687?src=jobsearchDesk&sid=15310699275724&xp=28&px=1',
+ 'skills': u'PHP, Laravel, laravel framework, HTML, css, javascript, ajax, jquery, json,...',
+ 'title': u'PHP Laravel Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Experience in developing e-commerce websites;Good analytic and problem-solving skills;Proficient ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-4 yrs',
+ 'hiringOrganization': u'Synergy Talent Solutions',
+ 'jobLocation': u'Bengaluru',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Sr-PHP-Developer-Synergy-Talent-Solutions-Bengaluru-2-to-4-years-050418008402?src=jobsearchDesk&sid=15310699275724&xp=29&px=1',
+ 'skills': u'Core PHP, JSON, MySQL, HTML, CSS, Bootstrap, API, jQuery, Ajax, Wordpress',
+ 'title': u'PHP Developer / Sr. PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'0-5 yrs',
+ 'hiringOrganization': u'Sunline Greensystems Private Limited',
+ 'jobLocation': u'Mumbai, Mumbai Suburbs, Navi Mumbai',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Walk-In-Interview-Sunline-Greensystems-Private-Limited-Mumbai-Mumbai-Suburbs-Navi-Mumbai-0-to-5-years-070718002727?src=jobsearchDesk&sid=15310699275724&xp=30&px=1',
+ 'skills': u'css, html, wordpress, javascript, php, jquery, mysql, web designing...',
+ 'title': u'PHP Developer Walk In Interview'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    4,00,000 - 7,00,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'4-6 yrs',
+ 'hiringOrganization': u'Avensure Management Services Pvt. Ltd.',
+ 'jobLocation': u'Gurgaon',
+ 'jobPoster': u'  Avensure Management Services Pvt. Ltd.  ',
+ 'link': u'https://www.naukri.com/job-listings-Hiring-for-PHP-Developer-Gurgaon-Avensure-Management-Services-Pvt-Ltd-Gurgaon-4-to-6-years-070718002525?src=jobsearchDesk&sid=15310699275724&xp=31&px=1',
+ 'skills': u'mysql, php, procedures, ajax, html5, css, jquery, javascript, xml...',
+ 'title': u'Hiring for PHP Developer - Gurgaon'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    3,00,000 - 4,00,000 P.A. Negotiable  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'BHARTI HR',
+ 'jobLocation': u'Lucknow',
+ 'jobPoster': u'  Zaheen Zaidi  ',
+ 'link': u'https://www.naukri.com/job-listings-Project-Manager-PHP-Lucknow-BHARTI-HR-Lucknow-3-to-5-years-070718002467?src=jobsearchDesk&sid=15310699275724&xp=32&px=1',
+ 'skills': u'PHP, Codeigniter, Database, Project Management',
+ 'title': u'Project Manager- PHP | Lucknow'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    1,75,000 - 3,00,000 P.A. Negotiable  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'2-4 yrs',
+ 'hiringOrganization': u'BHARTI HR',
+ 'jobLocation': u'Lucknow',
+ 'jobPoster': u'  Zaheen Zaidi  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Lucknow-BHARTI-HR-Lucknow-2-to-4-years-070718002220?src=jobsearchDesk&sid=15310699275724&xp=33&px=1',
+ 'skills': u'PHP, Codeigniter, Database, SQL',
+ 'title': u'PHP Developer | Lucknow'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'0-5 yrs',
+ 'hiringOrganization': u'Sunline Greensystems Private Limited',
+ 'jobLocation': u'Pune',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Walk-In-Interview-Sunline-Greensystems-Private-Limited-Pune-0-to-5-years-070718002012?src=jobsearchDesk&sid=15310699275724&xp=34&px=1',
+ 'skills': u'css, html, wordpress, javascript, php, jquery, mysql, web designing...',
+ 'title': u'PHP Developer Walk In Interview'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'    1,25,000 - 3,50,000 P.A.  ',
+ 'date': u'1 day ago',
+ 'experienceRequirements': u'0-4 yrs',
+ 'hiringOrganization': u'Spangle Placement',
+ 'jobLocation': u'Mohali, Chandigarh',
+ 'jobPoster': u'  Rajeev Kumar  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Fresher-at-Mohali-in-Software-Company-Spangle-Placement-Mohali-Chandigarh-0-to-4-years-070718000865?src=jobsearchDesk&sid=15310699275724&xp=35&px=1',
+ 'skills': u'PHP Developer, php programmer, php developer job in mohali, php fresher job...',
+ 'title': u'PHP Developer Fresher job at Mohali in Software Company'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'We are looking candidate for the role of Web Developer with experience in object oriented programming ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'1-5 yrs',
+ 'hiringOrganization': u'Tradezap',
+ 'jobLocation': u'Coimbatore',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Web-Developer-Codeigniter-Tradezap-Coimbatore-1-to-5-years-250518000539?src=jobsearchDesk&sid=15310699275724&xp=36&px=1',
+ 'skills': u'codeigniter, javascript, yii, jquery, ajax, php, mysql, json, html5...',
+ 'title': u'PHP Web Developer ( Codeigniter)'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'4-5 years experience in web and software development;Bachelors Degree in Computer Science ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'4-6 yrs',
+ 'hiringOrganization': u'NETSURION TECHNOLOGIES PRIVATE LIMITED',
+ 'jobLocation': u'Bengaluru',
+ 'jobPoster': u'  Thejaswini Giri  ',
+ 'link': u'https://www.naukri.com/job-listings-Senior-Software-Developer-php-Html-CSS-JavaScript-and-Mysql-NETSURION-TECHNOLOGIES-PRIVATE-LIMITED-Bengaluru-4-to-6-years-220618004100?src=jobsearchDesk&sid=15310699275724&xp=37&px=1',
+ 'skills': u'HTML, CSS, Javascript, PHP, MySQL, Kentico, Software Development...',
+ 'title': u'Senior Software Developer (php, Html, CSS, JavaScript and Mysql)'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Define, architect and innovate the technology platform on web & apps to achieve user experience of ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'7-10 yrs',
+ 'hiringOrganization': u'DesignADDA',
+ 'jobLocation': u'Bengaluru',
+ 'jobPoster': u'  Suraj Kumar  ',
+ 'link': u'https://www.naukri.com/job-listings-Chief-Technology-Officer-PHP-Codeigniter-Laravel-DesignADDA-Bengaluru-7-to-10-years-060718901468?src=jobsearchDesk&sid=15310699275724&xp=38&px=1',
+ 'skills': u'Codeigniter, Laravel, PHP, MySQL, AWS, React.Js, Linux, Platforms, Database...',
+ 'title': u'Chief Technology Officer - PHP/ Codeigniter/ Laravel'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'5-8 Years of experience working for software services or product development organizations;Experience: 3 ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'10-15 yrs',
+ 'hiringOrganization': u'RS Consulting',
+ 'jobLocation': u'Pune',
+ 'jobPoster': u'  Biswadip  ',
+ 'link': u'https://www.naukri.com/job-listings-Full-Stack-Developer-Reactjs-Angularjs-4-PHP-RS-Consulting-Pune-10-to-15-years-060718901141?src=jobsearchDesk&sid=15310699275724&xp=39&px=1',
+ 'skills': u'php, full stack developer, reactjs, angularjs, mongodb, nosql, rest...',
+ 'title': u'Full Stack Developer- Reactjs, Angularjs-4/ PHP'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'5-8 Years of experience working for software services or product development organizations;Experience: 3 ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'4-9 yrs',
+ 'hiringOrganization': u'RS Consulting',
+ 'jobLocation': u'Pune',
+ 'jobPoster': u'  Biswadip  ',
+ 'link': u'https://www.naukri.com/job-listings-Full-Stack-Developer-Reactjs-Angularjs-4-PHP-RS-Consulting-Pune-4-to-9-years-060718901138?src=jobsearchDesk&sid=15310699275724&xp=40&px=1',
+ 'skills': u'full stack developer, reactjs, angularjs, php, mongodb, nosql, rest...',
+ 'title': u'Full Stack Developer- Reactjs, Angularjs- 4 / PHP'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Experience integrating to 3rd party payment systems;" - 3  to  5 years of strong experience in PHP and ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'1-3 yrs',
+ 'hiringOrganization': u'FinesseIM - Startup',
+ 'jobLocation': u'Delhi',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-Senior-PHP-Developer-FinesseIM-Startup-Delhi-1-to-3-years-060718900936?src=jobsearchDesk&sid=15310699275724&xp=41&px=1',
+ 'skills': u'PHP, MySQL, Javascript, JQuery, CSS, Codeigniter, HTML, Symfony, Zend...',
+ 'title': u'Senior PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Minimum 3 years of proven software development experience in PHP;- Experience in developing web ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'Apex IT',
+ 'jobLocation': u'Bengaluru',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Codeigniter-laravel-mvc-Apex-IT-Bengaluru-3-to-5-years-060718900516?src=jobsearchDesk&sid=15310699275724&xp=42&px=1',
+ 'skills': u'PHP Developer, PHP, CodeIgniter, Laravel, MVC, Oracle Service Cloud, MySQL,...',
+ 'title': u'PHP Developer - Codeigniter/laravel/mvc'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Must possess a strong understanding of Object-Oriented technology;- Strong experience in developing ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'3-5 yrs',
+ 'hiringOrganization': u'TechHighway Systems',
+ 'jobLocation': u'Pune',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-Php-yii-Developer-Apache-mysql-jquery-TechHighway-Systems-Pune-3-to-5-years-060718900391?src=jobsearchDesk&sid=15310699275724&xp=43&px=1',
+ 'skills': u'CakePHP, Javascript, Yii, JQuery, CSS, HTML, PHP, MySQL, XHTML, Html5, My -...',
+ 'title': u'Php/yii Developer - Apache/mysql/jquery'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Should have minimum experience 6+ years of experience;- Should have experience in developing web ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'6-10 yrs',
+ 'hiringOrganization': u'HR Access Consulting',
+ 'jobLocation': u'Noida',
+ 'jobPoster': u'  HR Access  ',
+ 'link': u'https://www.naukri.com/job-listings-Senior-PHP-Developer-Zend-Javascript-AJAX-HR-Access-Consulting-Noida-6-to-10-years-060718900279?src=jobsearchDesk&sid=15310699275724&xp=44&px=1',
+ 'skills': u'Javascript, JQuery, Zend, Ajax, UI Development, Html5, MVC, PHP...',
+ 'title': u'Senior PHP Developer - Zend/ Javascript/ AJAX'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Good knowledge and understanding of front-end technologies and platforms, such as JavaScript, HTML5 and ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'3-8 yrs',
+ 'hiringOrganization': u'Rohini IT Consulting LLP',
+ 'jobLocation': u'Bengaluru',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Full-Stack-Development-LAMP-Applications-Rohini-IT-Consulting-LLP-Bengaluru-3-to-8-years-060718900255?src=jobsearchDesk&sid=15310699275724&xp=45&px=1',
+ 'skills': u'PHP Developer, Full Stack Development, LAMP Applications, LAMP, PHP / MySql...',
+ 'title': u'PHP Developer - Full Stack Development - LAMP Applications'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Proficient understanding of code version tools, such as Git, svn;- Must have 2+ years of ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'DigiLantern',
+ 'jobLocation': u'Noida',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Laravel-codeigniter-mvc-DigiLantern-Noida-2-to-5-years-060718900139?src=jobsearchDesk&sid=15310699275724&xp=46&px=1',
+ 'skills': u'Codeigniter, Laravel, Javascript, PHP, Html5, MVC, GIT, SQL, SVN, NoSQL...',
+ 'title': u'PHP Developer - Laravel/codeigniter/mvc'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'- Proficient understanding of code version tools, such as Git, svn;- Must have 2+ years of ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'DigiLantern',
+ 'jobLocation': u'Delhi NCR',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-PHP-Developer-Laravel-codeigniter-mvc-DigiLantern-Delhi-NCR-2-to-5-years-060718900032?src=jobsearchDesk&sid=15310699275724&xp=47&px=1',
+ 'skills': u'Codeigniter, Laravel, Javascript, PHP, Html5, MVC, GIT, SQL, SVN, NoSQL...',
+ 'title': u'PHP Developer - Laravel/codeigniter/mvc'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': None,
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'Eli Research India Private limited',
+ 'jobLocation': u'Faridabad',
+ 'jobPoster': None,
+ 'link': u'https://www.naukri.com/job-listings-Walkin-for-PHP-Developer-with-ELI-India-Faridabad-9th-July-12-July-Eli-Research-India-Private-limited-Faridabad-2-to-5-years-060718007357?src=jobsearchDesk&sid=15310699275724&xp=48&px=1',
+ 'skills': u'PHP, Codeigniter, Javascript, CakePHP, JQuery, MySQL, HTML, Zend, Yii, Ajax',
+ 'title': u'Walkin for PHP Developer with ELI India Faridabad(9th July -12 July)'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Strong exp in PHP. Exposure in Laravel ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-7 yrs',
+ 'hiringOrganization': u'Emerio Technologies Pvt Ltd',
+ 'jobLocation': u'Chennai',
+ 'jobPoster': u'  Kavitha Ezhilarasi  ',
+ 'link': u'https://www.naukri.com/job-listings-Hiring-PHP-Developers-srdevelopers-Emerio-Technologies-Pvt-Ltd-Chennai-2-to-7-years-060718006341?src=jobsearchDesk&sid=15310699275724&xp=49&px=1',
+ 'skills': u'Laravel, PHP',
+ 'title': u'Hiring PHP Developers/srdevelopers'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Good understanding of object oriented principles /programming and MVC;Experience in development ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'2-5 yrs',
+ 'hiringOrganization': u'Sun Dew Solutions Private Limited',
+ 'jobLocation': u'Kolkata',
+ 'jobPoster': u'  Sukanya Das  ',
+ 'link': u'https://www.naukri.com/job-listings-Urgent-Requirement-of-PHP-Developer-Sun-Dew-Solutions-Private-Limited-Kolkata-2-to-5-years-060718005644?src=jobsearchDesk&sid=15310699275724&xp=50&px=1',
+ 'skills': u'laravel, javascript, ajax, jquery, php, mysql, mvc, rest, cakephp, React.Js',
+ 'title': u'Urgent Requirement of PHP Developer'}
+Sun, 08 Jul 2018 22:42:08 scraper.py[line:237] DEBUG Scraped from <200 https://www.naukri.com/php-jobs>
+{'JobDescription': u'Must have been involved in the entire lifecycle of development of minimum four products;Experience with ...',
+ 'baseSalary': u'  Not disclosed ',
+ 'date': u'2 days ago',
+ 'experienceRequirements': u'7-12 yrs',
+ 'hiringOrganization': u'Network18 Media and Investments Ltd.',
+ 'jobLocation': u'Mumbai',
+ 'jobPoster': u'  Sumayya Mir  ',
+ 'link': u'https://www.naukri.com/job-listings-PHP-Senior-Software-Engineer-mumbai-7-Years-Network18-Media-and-Investments-Ltd-Mumbai-7-to-12-years-060718005638?src=jobsearchDesk&sid=15310699275724&xp=51&px=1',
+ 'skills': u'PHP, Javascript, MySQL, CSS, HTML, Symfony, CakePHP, Laravel, Zend, Node.Js',
+ 'title': u'PHP Senior Software Engineer (mumbai-7+ Years)'}
+Sun, 08 Jul 2018 22:42:08 engine.py[line:295] INFO Closing spider (finished)
+Sun, 08 Jul 2018 22:42:08 statscollectors.py[line:47] INFO Dumping Scrapy stats:
+{'downloader/request_bytes': 994,
  'downloader/request_count': 2,
  'downloader/request_method_count/GET': 2,
- 'downloader/response_bytes': 172055,
+ 'downloader/response_bytes': 33356,
  'downloader/response_count': 2,
  'downloader/response_status_count/200': 2,
  'finish_reason': 'finished',
- 'finish_time': datetime.datetime(2018, 7, 7, 16, 12, 58, 351576),
- 'memusage/max': 55492608,
- 'memusage/startup': 55492608,
+ 'finish_time': datetime.datetime(2018, 7, 8, 17, 12, 8, 250947),
+ 'item_scraped_count': 51,
+ 'memusage/max': 55390208,
+ 'memusage/startup': 55390208,
  'response_received_count': 2,
  'scheduler/dequeued': 1,
  'scheduler/dequeued/memory': 1,
  'scheduler/enqueued': 1,
  'scheduler/enqueued/memory': 1,
- 'start_time': datetime.datetime(2018, 7, 7, 16, 12, 57, 125355)}
-Sat, 07 Jul 2018 21:42:58 engine.py[line:326] INFO Spider closed (finished)
+ 'start_time': datetime.datetime(2018, 7, 8, 17, 12, 7, 428738)}
+Sun, 08 Jul 2018 22:42:08 engine.py[line:326] INFO Spider closed (finished)
